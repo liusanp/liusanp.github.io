@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>代码文思</title>
-    <link>https://liusanp.github.io/</link>
+    <link>https://blog.lao4g.top/</link>
     <description>Recent content on 代码文思</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
     <lastBuildDate>Sat, 25 Jun 2022 21:43:25 +0800</lastBuildDate>
     
-        <atom:link href="https://liusanp.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://blog.lao4g.top/index.xml" rel="self" type="application/rss+xml" />
     
     
     
         <item>
         <title>GIS地理信息系统</title>
-        <link>https://liusanp.github.io/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/</link>
+        <link>https://blog.lao4g.top/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/</link>
         <pubDate>Sat, 25 Jun 2022 21:43:25 +0800</pubDate>
         
-        <guid>https://liusanp.github.io/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/</guid>
-        <description>代码文思 https://liusanp.github.io/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/ -&lt;h2 id=&#34;gis基础知识&#34;&gt;GIS基础知识&lt;/h2&gt;
+        <guid>https://blog.lao4g.top/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/</guid>
+        <description>代码文思 https://blog.lao4g.top/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/ -&lt;h2 id=&#34;gis基础知识&#34;&gt;GIS基础知识&lt;/h2&gt;
 &lt;p&gt;前后端都要懂一点的 GIS：&lt;a href=&#34;https://www.yuque.com/datav/datav-cool/swteb8&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://www.yuque.com/datav/datav-cool/swteb8&#34;&gt;前后端都要懂一点的 GIS · 语雀&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;GIS历史概述与WebGis应用开发技术浅解：&lt;a href=&#34;https://cloud.tencent.com/developer/article/1484784&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1484784&#34;&gt;GIS历史概述与WebGis应用开发技术浅解 - 腾讯云开发者社区-腾讯云&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;OGC，开放地理空间信息联盟：&lt;a href=&#34;https://www.ogc.org/&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://www.ogc.org/&#34;&gt;https://www.ogc.org/&lt;/a&gt;﻿  &lt;a href=&#34;https://www.osgeo.cn/ogc-e-learning/index.html&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://www.osgeo.cn/ogc-e-learning/index.html&#34;&gt;OGC电子学习 — OGC e-Learning 2.0.0 文档&lt;/a&gt;&lt;/p&gt;
@@ -32,7 +32,7 @@
 &lt;p&gt;OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。&lt;/p&gt;
 &lt;p&gt;官网：&lt;a href=&#34;https://openlayers.org/&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://openlayers.org/&#34;&gt;https://openlayers.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;快速开始：&lt;a href=&#34;https://openlayers.org/en/latest/doc/quickstart.html&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://openlayers.org/en/latest/doc/quickstart.html&#34;&gt;https://openlayers.org/en/latest/doc/quickstart.html&lt;/a&gt;&lt;/p&gt;
-- https://liusanp.github.io/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/ - By liusanp.</description>
+- https://blog.lao4g.top/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/ - By liusanp.</description>
         </item>
     
     

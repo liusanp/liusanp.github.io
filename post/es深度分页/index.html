@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>GIS地理信息系统</title>
+<title>ES深度分页</title>
 
 
 
@@ -16,21 +16,15 @@
 
 
 
-<meta property="og:title" content="GIS地理信息系统" />
-<meta property="og:description" content="GIS基础知识 前后端都要懂一点的 GIS：前后端都要懂一点的 GIS · 语雀
-GIS历史概述与WebGis应用开发技术浅解：GIS历史概述与WebGis应用开发技术浅解 - 腾讯云开发者社区-腾讯云
-OGC，开放地理空间信息联盟：https://www.ogc.org/﻿ OGC电子学习 — OGC e-Learning 2.0.0 文档
-GeoServer 用于共享地理空间数据的开源服务器。GeoServer 是 OpenGIS Web 服务器规范的 J2EE 实现，利用 GeoServer 可以方便的发布地图数据，允许用户对特征数据进行更新、删除、插入操作，通过 GeoServer 可以比较容易的在用户之间迅速共享空间地理信息。
-官网：https://geoserver.org/
-用户手册：GeoServer 用户手册 — GeoServer 2.20.x 用户手册
-基础教程：GeoServer 基础教程（一）：环境搭建篇 | Ethan&#39;s Blog - 记录和思考
-OpenLayers OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。
-官网：https://openlayers.org/
-快速开始：https://openlayers.org/en/latest/doc/quickstart.html" />
+<meta property="og:title" content="ES深度分页" />
+<meta property="og:description" content="ES分页查询有三种情况：
+from &#43; size 从各分片查询（from &#43; size）条，合并后取（from - size）条 注：（from&#43;size）不能超过 max_result_window，默认10000条
+scroll 不适合实时查询，用于查询大批量数据遍历，游标过期会报错 所有结果缓存，类似查询时间点快照，用游标遍历 不能聚合，只有最初的查询有聚合结果 最佳排序是 _doc 入库时间 返回结果最大条数是size * 分片数
+search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.lao4g.top/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-06-25T21:43:25+08:00" />
-<meta property="article:modified_time" content="2022-06-25T21:43:25+08:00" /><meta property="og:site_name" content="代码文思" />
+<meta property="og:url" content="https://blog.lao4g.top/post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-26T11:59:58+08:00" />
+<meta property="article:modified_time" content="2022-06-26T11:59:58+08:00" /><meta property="og:site_name" content="代码文思" />
 
 
 
@@ -38,17 +32,11 @@ OpenLayers OpenLayers是一个专为Web GIS客户端开发提供的JavaScript �
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="GIS地理信息系统"/>
-<meta name="twitter:description" content="GIS基础知识 前后端都要懂一点的 GIS：前后端都要懂一点的 GIS · 语雀
-GIS历史概述与WebGis应用开发技术浅解：GIS历史概述与WebGis应用开发技术浅解 - 腾讯云开发者社区-腾讯云
-OGC，开放地理空间信息联盟：https://www.ogc.org/﻿ OGC电子学习 — OGC e-Learning 2.0.0 文档
-GeoServer 用于共享地理空间数据的开源服务器。GeoServer 是 OpenGIS Web 服务器规范的 J2EE 实现，利用 GeoServer 可以方便的发布地图数据，允许用户对特征数据进行更新、删除、插入操作，通过 GeoServer 可以比较容易的在用户之间迅速共享空间地理信息。
-官网：https://geoserver.org/
-用户手册：GeoServer 用户手册 — GeoServer 2.20.x 用户手册
-基础教程：GeoServer 基础教程（一）：环境搭建篇 | Ethan&#39;s Blog - 记录和思考
-OpenLayers OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。
-官网：https://openlayers.org/
-快速开始：https://openlayers.org/en/latest/doc/quickstart.html"/>
+<meta name="twitter:title" content="ES深度分页"/>
+<meta name="twitter:description" content="ES分页查询有三种情况：
+from &#43; size 从各分片查询（from &#43; size）条，合并后取（from - size）条 注：（from&#43;size）不能超过 max_result_window，默认10000条
+scroll 不适合实时查询，用于查询大批量数据遍历，游标过期会报错 所有结果缓存，类似查询时间点快照，用游标遍历 不能聚合，只有最初的查询有聚合结果 最佳排序是 _doc 入库时间 返回结果最大条数是size * 分片数
+search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻"/>
 
 
 
@@ -204,8 +192,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#gis%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" onclick="onNavClick(`#gis基础知识-nav`)" id="gis基础知识-nav">
-									GIS基础知识
+								<a href="#from--size" onclick="onNavClick(`#from--size-nav`)" id="from--size-nav">
+									from &#43; size
 								</a>
 							</li>
 						
@@ -222,8 +210,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#geoserver" onclick="onNavClick(`#geoserver-nav`)" id="geoserver-nav">
-									GeoServer
+								<a href="#scroll" onclick="onNavClick(`#scroll-nav`)" id="scroll-nav">
+									scroll
 								</a>
 							</li>
 						
@@ -240,8 +228,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#openlayers" onclick="onNavClick(`#openlayers-nav`)" id="openlayers-nav">
-									OpenLayers
+								<a href="#search_after" onclick="onNavClick(`#search_after-nav`)" id="search_after-nav">
+									search_after
 								</a>
 							</li>
 						
@@ -348,8 +336,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#gis%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" onclick="onNavClick(`#gis基础知识-nav`)" id="gis基础知识-nav">
-									GIS基础知识
+								<a href="#from--size" onclick="onNavClick(`#from--size-nav`)" id="from--size-nav">
+									from &#43; size
 								</a>
 							</li>
 						
@@ -366,8 +354,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#geoserver" onclick="onNavClick(`#geoserver-nav`)" id="geoserver-nav">
-									GeoServer
+								<a href="#scroll" onclick="onNavClick(`#scroll-nav`)" id="scroll-nav">
+									scroll
 								</a>
 							</li>
 						
@@ -384,8 +372,8 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 						
 						
 							<li>
-								<a href="#openlayers" onclick="onNavClick(`#openlayers-nav`)" id="openlayers-nav">
-									OpenLayers
+								<a href="#search_after" onclick="onNavClick(`#search_after-nav`)" id="search_after-nav">
+									search_after
 								</a>
 							</li>
 						
@@ -446,12 +434,12 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
             >
                 <div class="post-title">
-                    GIS地理信息系统
+                    ES深度分页
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2022-06-25 21:43
+                            2022-06-26 11:59
                         </time>
                         
 
@@ -464,10 +452,10 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/gis">GIS</a>
+                                <a href="/tags/es">ES</a>
                                 &nbsp;
                             
-                                <a href="/tags/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF">地理信息</a>
+                                <a href="/tags/%E5%88%86%E9%A1%B5">分页</a>
                                 &nbsp;
                             
                         
@@ -480,23 +468,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 <div class="post-body" v-pre>
                 
-                    <h2 id="gis基础知识">GIS基础知识</h2>
-<p>前后端都要懂一点的 GIS：<a href="https://www.yuque.com/datav/datav-cool/swteb8"></a><a href="https://www.yuque.com/datav/datav-cool/swteb8">前后端都要懂一点的 GIS · 语雀</a></p>
-<p>GIS历史概述与WebGis应用开发技术浅解：<a href="https://cloud.tencent.com/developer/article/1484784"></a><a href="https://cloud.tencent.com/developer/article/1484784">GIS历史概述与WebGis应用开发技术浅解 - 腾讯云开发者社区-腾讯云</a></p>
-<p>OGC，开放地理空间信息联盟：<a href="https://www.ogc.org/"></a><a href="https://www.ogc.org/">https://www.ogc.org/</a>﻿  <a href="https://www.osgeo.cn/ogc-e-learning/index.html"></a><a href="https://www.osgeo.cn/ogc-e-learning/index.html">OGC电子学习 — OGC e-Learning 2.0.0 文档</a></p>
-<h2 id="geoserver">GeoServer</h2>
-<p>用于共享地理空间数据的开源服务器。GeoServer 是 OpenGIS Web 服务器规范的 J2EE 实现，利用 GeoServer 可以方便的发布地图数据，允许用户对特征数据进行更新、删除、插入操作，通过 GeoServer 可以比较容易的在用户之间迅速共享空间地理信息。</p>
-<p>官网：<a href="https://geoserver.org/"></a><a href="https://geoserver.org/">https://geoserver.org/</a></p>
-<p>用户手册：<a href="https://docs.geoserver.org/latest/zhCN/user/index.html"></a><a href="https://docs.geoserver.org/latest/zhCN/user/index.html">GeoServer 用户手册 — GeoServer 2.20.x 用户手册</a></p>
-<p>基础教程：<a href="https://ethanblog.com/tech/installation-of-geoserver.html"></a><a href="https://ethanblog.com/tech/installation-of-geoserver.html">GeoServer 基础教程（一）：环境搭建篇 | Ethan's Blog - 记录和思考</a></p>
-<h2 id="openlayers">OpenLayers</h2>
-<p>OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。</p>
-<p>官网：<a href="https://openlayers.org/"></a><a href="https://openlayers.org/">https://openlayers.org/</a></p>
-<p>快速开始：<a href="https://openlayers.org/en/latest/doc/quickstart.html"></a><a href="https://openlayers.org/en/latest/doc/quickstart.html">https://openlayers.org/en/latest/doc/quickstart.html</a></p>
+                    <p>ES分页查询有三种情况：</p>
+<h2 id="from--size">from + size</h2>
+<p>从各分片查询（from + size）条，合并后取（from - size）条
+注：（from+size）不能超过 max_result_window，默认10000条</p>
+<h2 id="scroll">scroll</h2>
+<p>不适合实时查询，用于查询大批量数据遍历，游标过期会报错
+所有结果缓存，类似查询时间点快照，用游标遍历
+不能聚合，只有最初的查询有聚合结果
+最佳排序是 _doc 入库时间
+返回结果最大条数是size * 分片数</p>
+<h2 id="search_after">search_after</h2>
+<p>正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询
+实时查询，排序可能会变更，并行滚动多个查询
+只能一页页下翻</p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2022-06-25</p>
+		    <p style="color:#777;">最后修改于 2022-06-26</p>
                     
                 </div>
             </div>
@@ -505,14 +494,14 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="https://blog.lao4g.top/post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/">
-			下回<br>ES深度分页
+                <a class="newer-posts">
+			下回<br>已经到头啦。
                 </a>
                 
                 
                 
-                <a class="older-posts">
-			上回<br>这是最旧的文章了。
+                <a class="older-posts" href="https://blog.lao4g.top/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/">
+			上回<br>GIS地理信息系统
                 </a>
                 
             </nav>

@@ -6,7 +6,7 @@
     <description>Recent content on 代码文思</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>By liusanp.</copyright>
+    <copyright>By liusanp. 粤ICP备2022083903号</copyright>
     <lastBuildDate>Sun, 26 Jun 2022 11:59:58 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
@@ -33,7 +33,7 @@
 &lt;p&gt;正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询
 实时查询，排序可能会变更，并行滚动多个查询
 只能一页页下翻&lt;/p&gt;
-- /post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/ - By liusanp.</description>
+- /post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/ - By liusanp. 粤ICP备2022083903号</description>
         </item>
     
     
@@ -57,7 +57,7 @@
 &lt;p&gt;OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。&lt;/p&gt;
 &lt;p&gt;官网：&lt;a href=&#34;https://openlayers.org/&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://openlayers.org/&#34;&gt;https://openlayers.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;快速开始：&lt;a href=&#34;https://openlayers.org/en/latest/doc/quickstart.html&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://openlayers.org/en/latest/doc/quickstart.html&#34;&gt;https://openlayers.org/en/latest/doc/quickstart.html&lt;/a&gt;&lt;/p&gt;
-- /post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/ - By liusanp.</description>
+- /post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/ - By liusanp. 粤ICP备2022083903号</description>
         </item>
     
     

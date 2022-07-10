@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp. 粤ICP备2022083903号</copyright>
-    <lastBuildDate>Sun, 26 Jun 2022 11:59:58 +0800</lastBuildDate><atom:link href="/categories/%E8%B5%84%E6%96%99/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jul 2022 17:28:13 +0800</lastBuildDate><atom:link href="/categories/%E8%B5%84%E6%96%99/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anaconda3</title>
+      <link>/post/anaconda3/</link>
+      <pubDate>Sun, 10 Jul 2022 17:28:13 +0800</pubDate>
+      
+      <guid>/post/anaconda3/</guid>
+      <description># 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &amp;gt; environment.</description>
+    </item>
+    
     <item>
       <title>ES深度分页</title>
       <link>/post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/</link>

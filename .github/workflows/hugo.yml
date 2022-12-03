@@ -40,7 +40,7 @@ jobs:
         run: |
           git config --global user.email "liusanp@gmail.com"
           git config --global user.name "liusanp"
-          git clone --branch main --single-branch https://liusanp:$GH_TOKEN@github.com/liusanp/blog-hugo-data.git
+          git clone --branch main --single-branch "https://liusanp:$GH_TOKEN@github.com/liusanp/blog-hugo-data.git"
           ls
           cd blog-hugo-data
       - name: Setup Pages

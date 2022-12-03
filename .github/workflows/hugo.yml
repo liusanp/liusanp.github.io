@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.107.0
+      GH_TOKEN: ${{ DEPLOYKEY }}
     steps:
       - name: Install Hugo CLI
         run: |
@@ -37,12 +38,9 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Checkout
         run: |
-          wget https://github.com/liusanp/blog-hugo-data/archive/refs/heads/main.zip \
+          gh repo clone liusanp/blog-hugo-data \
           && ls \
-          && mkdir blog-hugo-data \
-          && unzip main.zip -d ./blog-hugo-data
-          ls
-          cd blog-hugo-data
+          && cd blog-hugo-data
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2

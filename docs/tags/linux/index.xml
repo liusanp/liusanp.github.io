@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 代码文思</title>
+    <link>/tags/linux/</link>
+    <description>Recent content in Linux on 代码文思</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>By liusanp.</copyright>
+    <lastBuildDate>Sun, 04 Dec 2022 00:05:08 +0800</lastBuildDate><atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux设置系统代理</title>
+      <link>/post/linux-system-proxy/</link>
+      <pubDate>Sun, 04 Dec 2022 00:05:08 +0800</pubDate>
+      
+      <guid>/post/linux-system-proxy/</guid>
+      <description># 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy </description>
+    </item>
+    
+  </channel>
+</rss>

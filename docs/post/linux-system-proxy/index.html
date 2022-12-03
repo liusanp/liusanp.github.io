@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Anaconda3</title>
+<title>Linux设置系统代理</title>
 
 
 
@@ -18,12 +18,12 @@
 
 
 
-<meta property="og:title" content="Anaconda3" />
-<meta property="og:description" content="# 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &gt; environment." />
+<meta property="og:title" content="Linux设置系统代理" />
+<meta property="og:description" content="# 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &#39;socks5://127.0.0.1:1080&#39; git config --global https.proxy &#39;socks5://127.0.0.1:1080&#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/anaconda3/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-07-10T17:28:13+08:00" />
-<meta property="article:modified_time" content="2022-07-10T17:28:13+08:00" /><meta property="og:site_name" content="代码文思" />
+<meta property="og:url" content="/post/linux-system-proxy/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-12-04T00:05:08+08:00" />
+<meta property="article:modified_time" content="2022-12-04T00:05:08+08:00" /><meta property="og:site_name" content="代码文思" />
 
 
 
@@ -31,8 +31,8 @@
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Anaconda3"/>
-<meta name="twitter:description" content="# 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &gt; environment."/>
+<meta name="twitter:title" content="Linux设置系统代理"/>
+<meta name="twitter:description" content="# 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &#39;socks5://127.0.0.1:1080&#39; git config --global https.proxy &#39;socks5://127.0.0.1:1080&#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy "/>
 
 
 
@@ -288,12 +288,12 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
             >
                 <div class="post-title">
-                    Anaconda3
+                    Linux设置系统代理
                     
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2022-07-10 17:28
+                            2022-12-04 00:05
                         </time>
                         
 
@@ -306,10 +306,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/python">Python</a>
-                                &nbsp;
-                            
-                                <a href="/tags/conda">conda</a>
+                                <a href="/tags/linux">Linux</a>
                                 &nbsp;
                             
                         
@@ -322,73 +319,43 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 <div class="post-body" v-pre>
                 
-                    <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 不自启动base，linux环境安装完成后会自动启动默认base环境 </span>
-</span></span><span style="display:flex;"><span>conda config --set auto_activate_base <span style="color:#658b00">false</span> 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 切换环境 </span>
-</span></span><span style="display:flex;"><span>conda activate 环境名 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 </span>
-</span></span><span style="display:flex;"><span>conda create -n <span style="color:#658b00">test</span> <span style="color:#00688b">python</span>=<span style="color:#b452cd">3</span> 
-</span></span><span style="display:flex;"><span>conda create -n <span style="color:#658b00">test</span> <span style="color:#00688b">python</span>=3.7 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 复制环境 </span>
-</span></span><span style="display:flex;"><span>conda create -n 新环境名 --clone 旧环境名 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 列出conda管理的所有环境 </span>
-</span></span><span style="display:flex;"><span>conda env list 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 列出当前环境的所有包 </span>
-</span></span><span style="display:flex;"><span>conda list 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 安装python包时要先切换到具体环境 </span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># conda方式安装python包 -i 指定源 </span>
-</span></span><span style="display:flex;"><span>conda install requests 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># pip方式安装python包 -i 指定源 -r 指定requirements.txt </span>
-</span></span><span style="display:flex;"><span>pip install requests 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># conda方式卸载requets包 </span>
-</span></span><span style="display:flex;"><span>conda remove requests 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># pip方式卸载requets包 </span>
-</span></span><span style="display:flex;"><span>conda remove requests 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 删除test环境及下属所有包 </span>
-</span></span><span style="display:flex;"><span>conda remove -n <span style="color:#658b00">test</span> --all 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 更新requests包 </span>
-</span></span><span style="display:flex;"><span>conda update requests 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 导出当前环境的包信息 </span>
-</span></span><span style="display:flex;"><span>conda env <span style="color:#658b00">export</span> &gt; environment.yaml 
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 用配置文件创建新的虚拟环境 </span>
-</span></span><span style="display:flex;"><span>conda env create -f environment.yaml
+                    <div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 设置代理</span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">http_proxy</span>=http://127.0.0.1:20172
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">HTTP_PROXY</span>=http://127.0.0.1:20172
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 生成requirements.txt</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 安装pipreqs</span>
-</span></span><span style="display:flex;"><span>pip install pipreqs
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 在当前目录生成</span>
-</span></span><span style="display:flex;"><span>pipreqs . --encoding utf8 --force
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">https_proxy</span>=http://127.0.0.1:20172
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">HTTPS_PROXY</span>=http://127.0.0.1:20172
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 创建虚拟环境</span>
-</span></span><span style="display:flex;"><span>mkvirtualenv -p python3.7 venvname
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 切换虚拟环境</span>
-</span></span><span style="display:flex;"><span>workon venvname
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">all_proxy</span>=socks5h://127.0.0.1:20173
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">ALL_PROXY</span>=socks5h://127.0.0.1:20173
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 查看conda信息</span>
-</span></span><span style="display:flex;"><span>conda info
-</span></span><span style="display:flex;"><span>conda info --envs
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">no_proxy</span>=localhost,127.0.0.0/8,::1
+</span></span><span style="display:flex;"><span><span style="color:#658b00">export</span> <span style="color:#00688b">NO_PROXY</span>=localhost,127.0.0.0/8,::1
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 安装失败断掉</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 清楚缓存</span>
-</span></span><span style="display:flex;"><span>conda clean --all
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 本地安装</span>
-</span></span><span style="display:flex;"><span>conda install --use-local ./pytorch-1.10.1.tar.bz2
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 查看代理</span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#00688b">$http_proxy</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 切换windows位数</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 打包为exe的话，版本尽量选择python3.6+32位版本，因为win64位系统向下兼容32位程序，</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 但是如果不考虑32位系统的话无所谓，直接python64位版本直接打包，只是只能在win64位系统上跑。</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 从64位切换到32位开发模式: </span>
-</span></span><span style="display:flex;"><span><span style="color:#658b00">set</span> <span style="color:#00688b">CONDA_FORCE_32BIT</span>=<span style="color:#b452cd">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#228b22"># 再切回64位开发模式: </span>
-</span></span><span style="display:flex;"><span><span style="color:#658b00">set</span> <span style="color:#00688b">CONDA_FORCE_32BIT</span>=<span style="color:#b452cd">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 取消代理</span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> http_proxy
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> HTTP_PROXY
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> https_proxy
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> HTTPS_PROXY
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> all_proxy
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> ALL_PROXY
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> no_proxy
+</span></span><span style="display:flex;"><span><span style="color:#658b00">unset</span> NO_PROXY
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>pip清华源
-</span></span><span style="display:flex;"><span>https://pypi.tuna.tsinghua.edu.cn/simple
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># git设置代理</span>
+</span></span><span style="display:flex;"><span>git config --global http.proxy <span style="color:#cd5555">&#39;socks5://127.0.0.1:1080&#39;</span>
+</span></span><span style="display:flex;"><span>git config --global https.proxy <span style="color:#cd5555">&#39;socks5://127.0.0.1:1080&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># git取消代理</span>
+</span></span><span style="display:flex;"><span>git config --global --unset http.proxy
+</span></span><span style="display:flex;"><span>git config --global --unset https.proxy
 </span></span></code></pre></div>
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">最后修改于 2022-07-10</p>
+		    <p style="color:#777;">最后修改于 2022-12-04</p>
                     
                 </div>
             </div>
@@ -397,14 +364,14 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="/post/linux-system-proxy/">
-			下回<br>Linux设置系统代理
+                <a class="newer-posts">
+			下回<br>已经到头啦。
                 </a>
                 
                 
                 
-                <a class="older-posts" href="/post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/">
-			上回<br>ES深度分页
+                <a class="older-posts" href="/post/anaconda3/">
+			上回<br>Anaconda3
                 </a>
                 
             </nav>

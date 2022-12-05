@@ -7,7 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Sun, 04 Dec 2022 00:05:08 +0800</lastBuildDate><atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Dec 2022 20:40:21 +0800</lastBuildDate><atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UE5在Windows打包Linux项目</title>
+      <link>/post/ue-package-linux/</link>
+      <pubDate>Mon, 05 Dec 2022 20:40:21 +0800</pubDate>
+      
+      <guid>/post/ue-package-linux/</guid>
+      <description>1、在官网下载交叉编译工具链：https://docs.unrealengine.com/5.0/zh-CN/linux-development-requirements-for-unreal-engine/
+2、默认安装后在 cmd 中输入 %LINUX_MULTIARCH_ROOT%x86_64-unknown-linux-gnu\bin\clang++ -v 测试是否安装成功
+3、重启ue5
+4、刷新平台状态
+5、如果打包平台前出现Linux图标，则已经可以打包Linux项目
+6、选择对应平台打包</description>
+    </item>
+    
     <item>
       <title>Linux设置系统代理</title>
       <link>/post/linux-system-proxy/</link>

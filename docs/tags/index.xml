@@ -7,13 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Mon, 05 Dec 2022 20:40:21 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Dec 2022 18:23:34 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>arm64</title>
+      <link>/tags/arm64/</link>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
+      
+      <guid>/tags/arm64/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Linux</title>
       <link>/tags/linux/</link>
-      <pubDate>Mon, 05 Dec 2022 20:40:21 +0800</pubDate>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
       
       <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WebRTC</title>
+      <link>/tags/webrtc/</link>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
+      
+      <guid>/tags/webrtc/</guid>
       <description></description>
     </item>
     

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on 代码文思</title>
-    <link>/tags/linux/</link>
-    <description>Recent content in Linux on 代码文思</description>
+    <title>arm64 on 代码文思</title>
+    <link>/tags/arm64/</link>
+    <description>Recent content in arm64 on 代码文思</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Tue, 06 Dec 2022 18:23:34 +0800</lastBuildDate><atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Dec 2022 18:23:34 +0800</lastBuildDate><atom:link href="/tags/arm64/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>编译arm64平台WebRTC</title>
       <link>/post/compile-arm64-webrtc/</link>
@@ -22,29 +22,6 @@ sudo apt-get install binutils-aarch64-linux-gnu sudo apt-get install gcc-aarch64
 mkdir webrtc-checkout cd webrtc-checkout fetch --nohooks webrtc gclient sync 2、切换到主分支
 cd src git checkout main 3、生成编译文件（执行其中一个）
 # 参照④ gn gen out/Linux-arm64 --args=&amp;#34;target_os=\&amp;#34;linux\&amp;#34; target_cpu=\&amp;#34;arm64\&amp;#34; is_debug=false rtc_include_tests=false rtc_use_h264=false is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false&amp;#34; # 参照⑤ gn gen out/Linux-arm64 --args=&amp;#34;target_os=\&amp;#34;linux\&amp;#34; target_cpu=\&amp;#34;arm64\&amp;#34; is_debug=false rtc_include_tests=false rtc_use_h264=true is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false is_clang=false treat_warnings_as_errors=false use_ozone=true rtc_include_pulse_audio=false use_libjpeg_turbo=false use_system_libjpeg=true&amp;#34; 4、编译③</description>
-    </item>
-    
-    <item>
-      <title>UE5在Windows打包Linux项目</title>
-      <link>/post/ue-package-linux/</link>
-      <pubDate>Mon, 05 Dec 2022 20:40:21 +0800</pubDate>
-      
-      <guid>/post/ue-package-linux/</guid>
-      <description>1、在官网下载交叉编译工具链：https://docs.unrealengine.com/5.0/zh-CN/linux-development-requirements-for-unreal-engine/
-2、默认安装后在 cmd 中输入 %LINUX_MULTIARCH_ROOT%x86_64-unknown-linux-gnu\bin\clang++ -v 测试是否安装成功
-3、重启ue5
-4、刷新平台状态
-5、如果打包平台前出现Linux图标，则已经可以打包Linux项目
-6、选择对应平台打包</description>
-    </item>
-    
-    <item>
-      <title>Linux设置系统代理</title>
-      <link>/post/linux-system-proxy/</link>
-      <pubDate>Sat, 03 Dec 2022 23:59:39 +0800</pubDate>
-      
-      <guid>/post/linux-system-proxy/</guid>
-      <description># 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy </description>
     </item>
     
   </channel>

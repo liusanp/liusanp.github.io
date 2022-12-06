@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html><head>
+<title>编译arm64平台WebRTC</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="bookmark" href="/images/favicon.ico">
+
+
+
+<meta property="og:title" content="编译arm64平台WebRTC" />
+<meta property="og:description" content="前置软件 1、安装Chromium depot tools①
+# 拉取源码 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git # 添加环境变量 echo &#34;export PATH=$PWD/depot_tools:$PATH&#34; &gt; ~/.bashrc source ~/.bashrc 2、执行安装编译依赖脚本②，该脚本需要在第一次同步代码后才有
+./build/install-build-deps.sh 3、执行下载编译环境脚本②，该脚本需要在第一次同步代码后才有
+./build/linux/sysroot_scripts/install-sysroot.py --arch=arm64 4、安装编译器
+sudo apt-get install binutils-aarch64-linux-gnu sudo apt-get install gcc-aarch64-linux-gnu g&#43;&#43;-aarch64-linux-gnu 编译 1、拉取源码③，后执行前置软件2和3
+mkdir webrtc-checkout cd webrtc-checkout fetch --nohooks webrtc gclient sync 2、切换到主分支
+cd src git checkout main 3、生成编译文件（执行其中一个）
+# 参照④ gn gen out/Linux-arm64 --args=&#34;target_os=\&#34;linux\&#34; target_cpu=\&#34;arm64\&#34; is_debug=false rtc_include_tests=false rtc_use_h264=false is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false&#34; # 参照⑤ gn gen out/Linux-arm64 --args=&#34;target_os=\&#34;linux\&#34; target_cpu=\&#34;arm64\&#34; is_debug=false rtc_include_tests=false rtc_use_h264=true is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false is_clang=false treat_warnings_as_errors=false use_ozone=true rtc_include_pulse_audio=false use_libjpeg_turbo=false use_system_libjpeg=true&#34; 4、编译③" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/compile-arm64-webrtc/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-12-06T18:23:34+08:00" />
+<meta property="article:modified_time" content="2022-12-06T18:23:34+08:00" /><meta property="og:site_name" content="代码文思" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="编译arm64平台WebRTC"/>
+<meta name="twitter:description" content="前置软件 1、安装Chromium depot tools①
+# 拉取源码 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git # 添加环境变量 echo &#34;export PATH=$PWD/depot_tools:$PATH&#34; &gt; ~/.bashrc source ~/.bashrc 2、执行安装编译依赖脚本②，该脚本需要在第一次同步代码后才有
+./build/install-build-deps.sh 3、执行下载编译环境脚本②，该脚本需要在第一次同步代码后才有
+./build/linux/sysroot_scripts/install-sysroot.py --arch=arm64 4、安装编译器
+sudo apt-get install binutils-aarch64-linux-gnu sudo apt-get install gcc-aarch64-linux-gnu g&#43;&#43;-aarch64-linux-gnu 编译 1、拉取源码③，后执行前置软件2和3
+mkdir webrtc-checkout cd webrtc-checkout fetch --nohooks webrtc gclient sync 2、切换到主分支
+cd src git checkout main 3、生成编译文件（执行其中一个）
+# 参照④ gn gen out/Linux-arm64 --args=&#34;target_os=\&#34;linux\&#34; target_cpu=\&#34;arm64\&#34; is_debug=false rtc_include_tests=false rtc_use_h264=false is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false&#34; # 参照⑤ gn gen out/Linux-arm64 --args=&#34;target_os=\&#34;linux\&#34; target_cpu=\&#34;arm64\&#34; is_debug=false rtc_include_tests=false rtc_use_h264=true is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false is_clang=false treat_warnings_as_errors=false use_ozone=true rtc_include_pulse_audio=false use_libjpeg_turbo=false use_system_libjpeg=true&#34; 4、编译③"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="/">
+    
+        <div class="nav-title">
+            代码文思
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                归档
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+	<br>
+	<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备 2022083903号</a>
+	<br>
+	<img src="/images/beian.png" style="width: 16px;"> <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011202002117" target="_blank">粤公网安备 44011202002117号</a>
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e7%bd%ae%e8%bd%af%e4%bb%b6" onclick="onNavClick(`#前置软件-nav`)" id="前置软件-nav">
+									前置软件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bc%96%e8%af%91" onclick="onNavClick(`#编译-nav`)" id="编译-nav">
+									编译
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%95%e7%94%a8" onclick="onNavClick(`#引用-nav`)" id="引用-nav">
+									引用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    归档
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e7%bd%ae%e8%bd%af%e4%bb%b6" onclick="onNavClick(`#前置软件-nav`)" id="前置软件-nav">
+									前置软件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%bc%96%e8%af%91" onclick="onNavClick(`#编译-nav`)" id="编译-nav">
+									编译
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%95%e7%94%a8" onclick="onNavClick(`#引用-nav`)" id="引用-nav">
+									引用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="/">
+            代码文思
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">代码文思</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    编译arm64平台WebRTC
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-12-06 18:23
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E8%B5%84%E6%96%99">资料</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/webrtc">WebRTC</a>
+                                &nbsp;
+                            
+                                <a href="/tags/arm64">arm64</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h2 id="前置软件">前置软件</h2>
+<p>1、安装Chromium depot tools①</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#228b22"># 拉取源码</span>
+</span></span><span style="display:flex;"><span>git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 添加环境变量</span>
+</span></span><span style="display:flex;"><span><span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;export PATH=</span><span style="color:#00688b">$PWD</span><span style="color:#cd5555">/depot_tools:</span><span style="color:#00688b">$PATH</span><span style="color:#cd5555">&#34;</span> &gt; ~/.bashrc
+</span></span><span style="display:flex;"><span><span style="color:#658b00">source</span> ~/.bashrc
+</span></span></code></pre></div><p>2、执行安装编译依赖脚本②，该脚本需要在第一次同步代码后才有</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./build/install-build-deps.sh
+</span></span></code></pre></div><p>3、执行下载编译环境脚本②，该脚本需要在第一次同步代码后才有</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./build/linux/sysroot_scripts/install-sysroot.py --arch=arm64
+</span></span></code></pre></div><p>4、安装编译器</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install binutils-aarch64-linux-gnu
+</span></span><span style="display:flex;"><span>sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+</span></span></code></pre></div><h2 id="编译">编译</h2>
+<p>1、拉取源码③，后执行前置软件2和3</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir webrtc-checkout
+</span></span><span style="display:flex;"><span><span style="color:#658b00">cd</span> webrtc-checkout
+</span></span><span style="display:flex;"><span>fetch --nohooks webrtc
+</span></span><span style="display:flex;"><span>gclient sync
+</span></span></code></pre></div><p>2、切换到主分支</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#658b00">cd</span> src
+</span></span><span style="display:flex;"><span>git checkout main
+</span></span></code></pre></div><p>3、生成编译文件（执行其中一个）</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#228b22"># 参照④</span>
+</span></span><span style="display:flex;"><span>gn gen out/Linux-arm64 --args=<span style="color:#cd5555">&#34;target_os=\&#34;linux\&#34; target_cpu=\&#34;arm64\&#34; is_debug=false rtc_include_tests=false rtc_use_h264=false is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 参照⑤</span>
+</span></span><span style="display:flex;"><span>gn gen out/Linux-arm64 --args=<span style="color:#cd5555">&#34;target_os=\&#34;linux\&#34; target_cpu=\&#34;arm64\&#34; is_debug=false rtc_include_tests=false rtc_use_h264=true is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false is_clang=false treat_warnings_as_errors=false use_ozone=true rtc_include_pulse_audio=false use_libjpeg_turbo=false use_system_libjpeg=true&#34;</span>
+</span></span></code></pre></div><p>4、编译③</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>autoninja -C out/Linux-arm64
+</span></span></code></pre></div><h2 id="引用">引用</h2>
+<ol>
+<li><a href="https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_setting_up">Install the Chromium depot tools</a></li>
+<li><a href="https://webrtc.googlesource.com/src/+/main/docs/native-code/development/prerequisite-sw/index.md">WebRTC development - Prerequisite software</a></li>
+<li><a href="https://webrtc.googlesource.com/src/+/main/docs/native-code/development/index.md">WebRTC development</a></li>
+<li><a href="https://github.com/webrtc-sdk/webrtc-build/blob/main/docs/build.md#linux-armarm64">Build command for all platforms</a></li>
+<li><a href="https://blog.csdn.net/tjyuanxi/article/details/124693182">gcc编译webrtc arm64版</a></li>
+</ol>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2022-12-06</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/post/ue-package-linux/">
+			上回<br>UE5在Windows打包Linux项目
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+	<br>
+	<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备 2022083903号</a>
+	<br>
+	<img src="/images/beian.png" style="width: 16px;"> <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011202002117" target="_blank">粤公网安备 44011202002117号</a>
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

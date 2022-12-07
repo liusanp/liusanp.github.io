@@ -3,7 +3,6 @@ title: "Anaconda3"
 date: 2022-07-10T17:28:13+08:00
 tags: [Python, conda]
 categories: 资料
-draft: false
 ---
 
 ```shell
@@ -71,3 +70,6 @@ set CONDA_FORCE_32BIT=0
 pip清华源
 https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+
+
+> 原链接：[Anaconda3](/post/Anaconda3)

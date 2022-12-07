@@ -1,6 +1,6 @@
 ---
 title: "Linux设置系统代理"
-date: 2022-12-03T23:59:39+08:00
+date: 2022-12-04T00:05:08+08:00
 tags: [Linux]
 categories: 资料
 ---
@@ -41,3 +41,6 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 
 ```
+
+
+> 原链接：[Linux设置系统代理](/post/linux-system-proxy)

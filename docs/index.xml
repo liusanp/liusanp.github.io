@@ -58,6 +58,9 @@
 &lt;li&gt;&lt;a href=&#34;https://github.com/webrtc-sdk/webrtc-build/blob/main/docs/build.md#linux-armarm64&#34;&gt;Build command for all platforms&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/tjyuanxi/article/details/124693182&#34;&gt;gcc编译webrtc arm64版&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/compile-arm64-webrtc&#34;&gt;编译arm64平台WebRTC&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 - /post/compile-arm64-webrtc/ - By liusanp.</description>
         </item>
     
@@ -78,6 +81,9 @@
 &lt;p&gt;5、如果打包平台前出现Linux图标，则已经可以打包Linux项目&lt;/p&gt;
 &lt;p&gt;6、选择对应平台打包&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/ue-package-linux-3.png&#34; alt=&#34;ue-package-linux-3&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/ue-package-linux&#34;&gt;UE5在Windows打包Linux项目&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 - /post/ue-package-linux/ - By liusanp.</description>
         </item>
     
@@ -122,7 +128,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# git取消代理&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global --unset http.proxy
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git config --global --unset https.proxy
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- /post/linux-system-proxy/ - By liusanp.</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/linux-system-proxy&#34;&gt;Linux设置系统代理&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+- /post/linux-system-proxy/ - By liusanp.</description>
         </item>
     
     
@@ -196,7 +205,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip清华源
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https://pypi.tuna.tsinghua.edu.cn/simple
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- /post/anaconda3/ - By liusanp.</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/Anaconda3&#34;&gt;Anaconda3&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+- /post/anaconda3/ - By liusanp.</description>
         </item>
     
     
@@ -221,6 +233,9 @@
 &lt;p&gt;正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询
 实时查询，排序可能会变更，并行滚动多个查询
 只能一页页下翻&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/ES%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5&#34;&gt;ES深度分页&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 - /post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/ - By liusanp.</description>
         </item>
     
@@ -245,6 +260,9 @@
 &lt;p&gt;OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。&lt;/p&gt;
 &lt;p&gt;官网：&lt;a href=&#34;https://openlayers.org/&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://openlayers.org/&#34;&gt;https://openlayers.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;快速开始：&lt;a href=&#34;https://openlayers.org/en/latest/doc/quickstart.html&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://openlayers.org/en/latest/doc/quickstart.html&#34;&gt;https://openlayers.org/en/latest/doc/quickstart.html&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/GIS%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F&#34;&gt;GIS地理信息系统&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 - /post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/ - By liusanp.</description>
         </item>
     

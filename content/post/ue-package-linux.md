@@ -22,3 +22,6 @@ categories: 资料
 6、选择对应平台打包
 
 ![ue-package-linux-3](https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/ue-package-linux-3.png)
+
+
+> 原链接：[UE5在Windows打包Linux项目](/post/ue-package-linux)

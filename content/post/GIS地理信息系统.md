@@ -31,3 +31,6 @@ OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，�
 官网：[](https://openlayers.org/)[https://openlayers.org/](https://openlayers.org/)
 
 快速开始：[](https://openlayers.org/en/latest/doc/quickstart.html)https://openlayers.org/en/latest/doc/quickstart.html
+
+
+> 原链接：[GIS地理信息系统](/post/GIS地理信息系统)

@@ -23,7 +23,8 @@ GeoServer 用于共享地理空间数据的开源服务器。GeoServer 是 OpenG
 基础教程：GeoServer 基础教程（一）：环境搭建篇 | Ethan&#39;s Blog - 记录和思考
 OpenLayers OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。
 官网：https://openlayers.org/
-快速开始：https://openlayers.org/en/latest/doc/quickstart.html</description>
+快速开始：https://openlayers.org/en/latest/doc/quickstart.html
+原链接：GIS地理信息系统</description>
     </item>
     
   </channel>

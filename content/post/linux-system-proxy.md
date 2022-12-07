@@ -41,3 +41,6 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 
 ```
+
+
+> 原链接：[Linux设置系统代理](/post/linux-system-proxy)

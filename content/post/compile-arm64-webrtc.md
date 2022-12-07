@@ -76,3 +76,6 @@ autoninja -C out/Linux-arm64
 3. [WebRTC development](https://webrtc.googlesource.com/src/+/main/docs/native-code/development/index.md)
 4. [Build command for all platforms](https://github.com/webrtc-sdk/webrtc-build/blob/main/docs/build.md#linux-armarm64)
 5. [gcc编译webrtc arm64版](https://blog.csdn.net/tjyuanxi/article/details/124693182)
+
+
+> 原链接：[编译arm64平台WebRTC](/post/compile-arm64-webrtc)

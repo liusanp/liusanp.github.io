@@ -22,7 +22,8 @@
 <meta property="og:description" content="ES分页查询有三种情况：
 from &#43; size 从各分片查询（from &#43; size）条，合并后取（from - size）条 注：（from&#43;size）不能超过 max_result_window，默认10000条
 scroll 不适合实时查询，用于查询大批量数据遍历，游标过期会报错 所有结果缓存，类似查询时间点快照，用游标遍历 不能聚合，只有最初的查询有聚合结果 最佳排序是 _doc 入库时间 返回结果最大条数是size * 分片数
-search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻" />
+search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻
+原链接：ES深度分页" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-06-26T11:59:58+08:00" />
@@ -38,7 +39,8 @@ search_after 正常查询后，将前一次查询的最后一条数据的sort放
 <meta name="twitter:description" content="ES分页查询有三种情况：
 from &#43; size 从各分片查询（from &#43; size）条，合并后取（from - size）条 注：（from&#43;size）不能超过 max_result_window，默认10000条
 scroll 不适合实时查询，用于查询大批量数据遍历，游标过期会报错 所有结果缓存，类似查询时间点快照，用游标遍历 不能聚合，只有最初的查询有聚合结果 最佳排序是 _doc 入库时间 返回结果最大条数是size * 分片数
-search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻"/>
+search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻
+原链接：ES深度分页"/>
 
 
 
@@ -485,6 +487,9 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 <p>正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询
 实时查询，排序可能会变更，并行滚动多个查询
 只能一页页下翻</p>
+<blockquote>
+<p>原链接：<a href="/post/ES%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5">ES深度分页</a></p>
+</blockquote>
 
                     
                     <HR width="100%" id="EOF">

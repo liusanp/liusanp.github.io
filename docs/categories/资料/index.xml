@@ -35,16 +35,17 @@ cd src git checkout main 3、生成编译文件（执行其中一个）
 3、重启ue5
 4、刷新平台状态
 5、如果打包平台前出现Linux图标，则已经可以打包Linux项目
-6、选择对应平台打包</description>
+6、选择对应平台打包
+原链接：UE5在Windows打包Linux项目</description>
     </item>
     
     <item>
       <title>Linux设置系统代理</title>
       <link>/post/linux-system-proxy/</link>
-      <pubDate>Sat, 03 Dec 2022 23:59:39 +0800</pubDate>
+      <pubDate>Sun, 04 Dec 2022 00:05:08 +0800</pubDate>
       
       <guid>/post/linux-system-proxy/</guid>
-      <description># 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy </description>
+      <description># 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy 原链接：Linux设置系统代理</description>
     </item>
     
     <item>
@@ -65,7 +66,8 @@ cd src git checkout main 3、生成编译文件（执行其中一个）
       <description>ES分页查询有三种情况：
 from + size 从各分片查询（from + size）条，合并后取（from - size）条 注：（from+size）不能超过 max_result_window，默认10000条
 scroll 不适合实时查询，用于查询大批量数据遍历，游标过期会报错 所有结果缓存，类似查询时间点快照，用游标遍历 不能聚合，只有最初的查询有聚合结果 最佳排序是 _doc 入库时间 返回结果最大条数是size * 分片数
-search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻</description>
+search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻
+原链接：ES深度分页</description>
     </item>
     
     <item>
@@ -83,7 +85,8 @@ GeoServer 用于共享地理空间数据的开源服务器。GeoServer 是 OpenG
 基础教程：GeoServer 基础教程（一）：环境搭建篇 | Ethan&#39;s Blog - 记录和思考
 OpenLayers OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。
 官网：https://openlayers.org/
-快速开始：https://openlayers.org/en/latest/doc/quickstart.html</description>
+快速开始：https://openlayers.org/en/latest/doc/quickstart.html
+原链接：GIS地理信息系统</description>
     </item>
     
   </channel>

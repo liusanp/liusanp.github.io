@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Tue, 06 Dec 2022 18:23:34 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Sep 2023 16:35:30 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>label</title>
+      <link>/tags/label/</link>
+      <pubDate>Thu, 21 Sep 2023 16:35:30 +0800</pubDate>
+      
+      <guid>/tags/label/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>标注</title>
+      <link>/tags/%E6%A0%87%E6%B3%A8/</link>
+      <pubDate>Thu, 21 Sep 2023 16:35:30 +0800</pubDate>
+      
+      <guid>/tags/%E6%A0%87%E6%B3%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yolo</title>
+      <link>/tags/yolo/</link>
+      <pubDate>Thu, 21 Sep 2023 16:30:51 +0800</pubDate>
+      
+      <guid>/tags/yolo/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>arm64</title>
       <link>/tags/arm64/</link>

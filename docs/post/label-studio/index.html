@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html><head>
+<title>使用label-studio进行图片标注</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="bookmark" href="/images/favicon.ico">
+
+
+
+<meta property="og:title" content="使用label-studio进行图片标注" />
+<meta property="og:description" content="使用label-studio进行图片标注 使用label-studio进行标注。
+1、创建项目 2、配置项目 2.1、打开项目 2.2、打开配置 2.3、选择标注类型 2.4、选择目标检测类型 2.5、添加标签 3、导入图片 3.1、打开导入框 3.2、选择图片并导入 4、标注图片 4.1、选择图片 4.2、标注图片 5、导出结果 5.1、选择已标注图片 5.2、选择导出格式并导出 原链接：Label Studio" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/label-studio/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-09-21T16:35:30+08:00" />
+<meta property="article:modified_time" content="2023-09-21T16:35:30+08:00" /><meta property="og:site_name" content="代码文思" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用label-studio进行图片标注"/>
+<meta name="twitter:description" content="使用label-studio进行图片标注 使用label-studio进行标注。
+1、创建项目 2、配置项目 2.1、打开项目 2.2、打开配置 2.3、选择标注类型 2.4、选择目标检测类型 2.5、添加标签 3、导入图片 3.1、打开导入框 3.2、选择图片并导入 4、标注图片 4.1、选择图片 4.2、标注图片 5、导出结果 5.1、选择已标注图片 5.2、选择导出格式并导出 原链接：Label Studio"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="/">
+    
+        <div class="nav-title">
+            代码文思
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                归档
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8label-studio%e8%bf%9b%e8%a1%8c%e5%9b%be%e7%89%87%e6%a0%87%e6%b3%a8" onclick="onNavClick(`#使用label-studio进行图片标注-nav`)" id="使用label-studio进行图片标注-nav">
+									使用label-studio进行图片标注
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#1%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#1创建项目-nav`)" id="1创建项目-nav">
+									1、创建项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2%e9%85%8d%e7%bd%ae%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#2配置项目-nav`)" id="2配置项目-nav">
+									2、配置项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#21%e6%89%93%e5%bc%80%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#21打开项目-nav`)" id="21打开项目-nav">
+									2.1、打开项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22%e6%89%93%e5%bc%80%e9%85%8d%e7%bd%ae" onclick="onNavClick(`#22打开配置-nav`)" id="22打开配置-nav">
+									2.2、打开配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#23%e9%80%89%e6%8b%a9%e6%a0%87%e6%b3%a8%e7%b1%bb%e5%9e%8b" onclick="onNavClick(`#23选择标注类型-nav`)" id="23选择标注类型-nav">
+									2.3、选择标注类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#24%e9%80%89%e6%8b%a9%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b%e7%b1%bb%e5%9e%8b" onclick="onNavClick(`#24选择目标检测类型-nav`)" id="24选择目标检测类型-nav">
+									2.4、选择目标检测类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#25%e6%b7%bb%e5%8a%a0%e6%a0%87%e7%ad%be" onclick="onNavClick(`#25添加标签-nav`)" id="25添加标签-nav">
+									2.5、添加标签
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#3%e5%af%bc%e5%85%a5%e5%9b%be%e7%89%87" onclick="onNavClick(`#3导入图片-nav`)" id="3导入图片-nav">
+									3、导入图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#31%e6%89%93%e5%bc%80%e5%af%bc%e5%85%a5%e6%a1%86" onclick="onNavClick(`#31打开导入框-nav`)" id="31打开导入框-nav">
+									3.1、打开导入框
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#32%e9%80%89%e6%8b%a9%e5%9b%be%e7%89%87%e5%b9%b6%e5%af%bc%e5%85%a5" onclick="onNavClick(`#32选择图片并导入-nav`)" id="32选择图片并导入-nav">
+									3.2、选择图片并导入
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#4%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87" onclick="onNavClick(`#4标注图片-nav`)" id="4标注图片-nav">
+									4、标注图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#41%e9%80%89%e6%8b%a9%e5%9b%be%e7%89%87" onclick="onNavClick(`#41选择图片-nav`)" id="41选择图片-nav">
+									4.1、选择图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87" onclick="onNavClick(`#42标注图片-nav`)" id="42标注图片-nav">
+									4.2、标注图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#5%e5%af%bc%e5%87%ba%e7%bb%93%e6%9e%9c" onclick="onNavClick(`#5导出结果-nav`)" id="5导出结果-nav">
+									5、导出结果
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#51%e9%80%89%e6%8b%a9%e5%b7%b2%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87" onclick="onNavClick(`#51选择已标注图片-nav`)" id="51选择已标注图片-nav">
+									5.1、选择已标注图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#52%e9%80%89%e6%8b%a9%e5%af%bc%e5%87%ba%e6%a0%bc%e5%bc%8f%e5%b9%b6%e5%af%bc%e5%87%ba" onclick="onNavClick(`#52选择导出格式并导出-nav`)" id="52选择导出格式并导出-nav">
+									5.2、选择导出格式并导出
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    归档
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8label-studio%e8%bf%9b%e8%a1%8c%e5%9b%be%e7%89%87%e6%a0%87%e6%b3%a8" onclick="onNavClick(`#使用label-studio进行图片标注-nav`)" id="使用label-studio进行图片标注-nav">
+									使用label-studio进行图片标注
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#1%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#1创建项目-nav`)" id="1创建项目-nav">
+									1、创建项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#2%e9%85%8d%e7%bd%ae%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#2配置项目-nav`)" id="2配置项目-nav">
+									2、配置项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#21%e6%89%93%e5%bc%80%e9%a1%b9%e7%9b%ae" onclick="onNavClick(`#21打开项目-nav`)" id="21打开项目-nav">
+									2.1、打开项目
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#22%e6%89%93%e5%bc%80%e9%85%8d%e7%bd%ae" onclick="onNavClick(`#22打开配置-nav`)" id="22打开配置-nav">
+									2.2、打开配置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#23%e9%80%89%e6%8b%a9%e6%a0%87%e6%b3%a8%e7%b1%bb%e5%9e%8b" onclick="onNavClick(`#23选择标注类型-nav`)" id="23选择标注类型-nav">
+									2.3、选择标注类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#24%e9%80%89%e6%8b%a9%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b%e7%b1%bb%e5%9e%8b" onclick="onNavClick(`#24选择目标检测类型-nav`)" id="24选择目标检测类型-nav">
+									2.4、选择目标检测类型
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#25%e6%b7%bb%e5%8a%a0%e6%a0%87%e7%ad%be" onclick="onNavClick(`#25添加标签-nav`)" id="25添加标签-nav">
+									2.5、添加标签
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#3%e5%af%bc%e5%85%a5%e5%9b%be%e7%89%87" onclick="onNavClick(`#3导入图片-nav`)" id="3导入图片-nav">
+									3、导入图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#31%e6%89%93%e5%bc%80%e5%af%bc%e5%85%a5%e6%a1%86" onclick="onNavClick(`#31打开导入框-nav`)" id="31打开导入框-nav">
+									3.1、打开导入框
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#32%e9%80%89%e6%8b%a9%e5%9b%be%e7%89%87%e5%b9%b6%e5%af%bc%e5%85%a5" onclick="onNavClick(`#32选择图片并导入-nav`)" id="32选择图片并导入-nav">
+									3.2、选择图片并导入
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#4%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87" onclick="onNavClick(`#4标注图片-nav`)" id="4标注图片-nav">
+									4、标注图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#41%e9%80%89%e6%8b%a9%e5%9b%be%e7%89%87" onclick="onNavClick(`#41选择图片-nav`)" id="41选择图片-nav">
+									4.1、选择图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#42%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87" onclick="onNavClick(`#42标注图片-nav`)" id="42标注图片-nav">
+									4.2、标注图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#5%e5%af%bc%e5%87%ba%e7%bb%93%e6%9e%9c" onclick="onNavClick(`#5导出结果-nav`)" id="5导出结果-nav">
+									5、导出结果
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#51%e9%80%89%e6%8b%a9%e5%b7%b2%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87" onclick="onNavClick(`#51选择已标注图片-nav`)" id="51选择已标注图片-nav">
+									5.1、选择已标注图片
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#52%e9%80%89%e6%8b%a9%e5%af%bc%e5%87%ba%e6%a0%bc%e5%bc%8f%e5%b9%b6%e5%af%bc%e5%87%ba" onclick="onNavClick(`#52选择导出格式并导出-nav`)" id="52选择导出格式并导出-nav">
+									5.2、选择导出格式并导出
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="/">
+            代码文思
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">代码文思</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    使用label-studio进行图片标注
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2023-09-21 16:35
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E8%B5%84%E6%96%99">资料</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/label">label</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E6%A0%87%E6%B3%A8">标注</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h1 id="使用label-studio进行图片标注">使用label-studio进行图片标注</h1>
+<p>使用<a href="https://github.com/HumanSignal/label-studio">label-studio</a>进行标注。</p>
+<h2 id="1创建项目">1、创建项目</h2>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211532861.png" alt="Snipaste_2023-09-21_14-27-49"></p>
+<h2 id="2配置项目">2、配置项目</h2>
+<h3 id="21打开项目">2.1、打开项目</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211544729.png" alt="image-20230921154406573"></p>
+<h3 id="22打开配置">2.2、打开配置</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211545110.png" alt="image-20230921154459940"></p>
+<h3 id="23选择标注类型">2.3、选择标注类型</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211545196.png" alt="image-20230921154557028"></p>
+<h3 id="24选择目标检测类型">2.4、选择目标检测类型</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211546994.png" alt="image-20230921154626614"></p>
+<h3 id="25添加标签">2.5、添加标签</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211547175.png" alt="image-20230921154723882"></p>
+<h2 id="3导入图片">3、导入图片</h2>
+<h3 id="31打开导入框">3.1、打开导入框</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211549273.png" alt="image-20230921154937113"></p>
+<h3 id="32选择图片并导入">3.2、选择图片并导入</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211550143.png" alt="image-20230921155032977"></p>
+<h2 id="4标注图片">4、标注图片</h2>
+<h3 id="41选择图片">4.1、选择图片</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211552998.png" alt="image-20230921155232834"></p>
+<h3 id="42标注图片">4.2、标注图片</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211552786.png" alt="image-20230921155252464"></p>
+<h2 id="5导出结果">5、导出结果</h2>
+<h3 id="51选择已标注图片">5.1、选择已标注图片</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211554844.png" alt="image-20230921155440672"></p>
+<h3 id="52选择导出格式并导出">5.2、选择导出格式并导出</h3>
+<p><img src="https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211555314.png" alt="image-20230921155500113"></p>
+<blockquote>
+<p>原链接：<a href="/post/label-studio">Label Studio</a></p>
+</blockquote>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2023-09-21</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/post/yolov5/">
+			上回<br>YoloV5目标检测模型训练
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

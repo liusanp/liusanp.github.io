@@ -7,9 +7,130 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Tue, 06 Dec 2022 18:23:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Sep 2023 16:35:30 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>使用label-studio进行图片标注</title>
+        <link>/post/label-studio/</link>
+        <pubDate>Thu, 21 Sep 2023 16:35:30 +0800</pubDate>
+        
+        <guid>/post/label-studio/</guid>
+        <description>代码文思 /post/label-studio/ -&lt;h1 id=&#34;使用label-studio进行图片标注&#34;&gt;使用label-studio进行图片标注&lt;/h1&gt;
+&lt;p&gt;使用&lt;a href=&#34;https://github.com/HumanSignal/label-studio&#34;&gt;label-studio&lt;/a&gt;进行标注。&lt;/p&gt;
+&lt;h2 id=&#34;1创建项目&#34;&gt;1、创建项目&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211532861.png&#34; alt=&#34;Snipaste_2023-09-21_14-27-49&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2配置项目&#34;&gt;2、配置项目&lt;/h2&gt;
+&lt;h3 id=&#34;21打开项目&#34;&gt;2.1、打开项目&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211544729.png&#34; alt=&#34;image-20230921154406573&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;22打开配置&#34;&gt;2.2、打开配置&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211545110.png&#34; alt=&#34;image-20230921154459940&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;23选择标注类型&#34;&gt;2.3、选择标注类型&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211545196.png&#34; alt=&#34;image-20230921154557028&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;24选择目标检测类型&#34;&gt;2.4、选择目标检测类型&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211546994.png&#34; alt=&#34;image-20230921154626614&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;25添加标签&#34;&gt;2.5、添加标签&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211547175.png&#34; alt=&#34;image-20230921154723882&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3导入图片&#34;&gt;3、导入图片&lt;/h2&gt;
+&lt;h3 id=&#34;31打开导入框&#34;&gt;3.1、打开导入框&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211549273.png&#34; alt=&#34;image-20230921154937113&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;32选择图片并导入&#34;&gt;3.2、选择图片并导入&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211550143.png&#34; alt=&#34;image-20230921155032977&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4标注图片&#34;&gt;4、标注图片&lt;/h2&gt;
+&lt;h3 id=&#34;41选择图片&#34;&gt;4.1、选择图片&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211552998.png&#34; alt=&#34;image-20230921155232834&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;42标注图片&#34;&gt;4.2、标注图片&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211552786.png&#34; alt=&#34;image-20230921155252464&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5导出结果&#34;&gt;5、导出结果&lt;/h2&gt;
+&lt;h3 id=&#34;51选择已标注图片&#34;&gt;5.1、选择已标注图片&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211554844.png&#34; alt=&#34;image-20230921155440672&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;52选择导出格式并导出&#34;&gt;5.2、选择导出格式并导出&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211555314.png&#34; alt=&#34;image-20230921155500113&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/label-studio&#34;&gt;Label Studio&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+- /post/label-studio/ - By liusanp.</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>YoloV5目标检测模型训练</title>
+        <link>/post/yolov5/</link>
+        <pubDate>Thu, 21 Sep 2023 16:30:51 +0800</pubDate>
+        
+        <guid>/post/yolov5/</guid>
+        <description>代码文思 /post/yolov5/ -&lt;h1 id=&#34;yolov5目标检测模型训练&#34;&gt;YoloV5目标检测模型训练&lt;/h1&gt;
+&lt;h2 id=&#34;图片标注&#34;&gt;图片标注&lt;/h2&gt;
+&lt;p&gt;使用labelimg进行图片标注&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 安装&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install labelimg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 启动（在image_root目录启动）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# image_root              // 数据标注根目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# ├─images                // 图片存放目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# ├─labels                // 标注结果存放目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# └─labels.txt            // 预加载标签，一行一个&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;labelimg images labels.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202303311152523.jpg&#34; alt=&#34;Snipaste_2023-03-31_11-52-15.jpg&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;模型训练&#34;&gt;模型训练&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/ultralytics/yolov5/tree/v7.0&#34;&gt;以yolov5-7.0为例&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1从github下载zip包或者克隆代码&#34;&gt;1、从GitHub下载zip包或者克隆代码&lt;/h3&gt;
+&lt;h3 id=&#34;2准备数据集&#34;&gt;2、准备数据集&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 数据集目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# image_root              // 数据标注根目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# ├─train                 // 训练集&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# | ├─images              // 图片存放目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# | └─labels              // 标注结果存放目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# ├─val                   // 验证集&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# | ├─images              // 图片存放目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# | └─labels              // 标注结果存放目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# └─data.yaml             // 数据集配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data.yaml配置：
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;path&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;data/image_root &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# dataset root dir  &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;train&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;train &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# train images (relative to &amp;#39;path&amp;#39;) 118287 images  &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;val &lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# val images (relative to &amp;#39;path&amp;#39;) 5000 images  &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# test: test-dev2017.txt  # 20288 of 40670 images, submit to   &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# Classes  &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;nc&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# number of classes  &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;names&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;[&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;class1&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;class2&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;]&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3下载模型&#34;&gt;3、下载模型&lt;/h3&gt;
+&lt;p&gt;从&lt;a href=&#34;https://github.com/ultralytics/yolov5/releases&#34;&gt;Github releases&lt;/a&gt;下载预训练模型，可根据需要选择模型大小：yolov5s.pt、yolov5m.pt、yolov5l.pt、yolov5x.pt。将下载好的模型放在yolov5源码的models目录中，然后将选择的模型对应yaml文件中的nc修改为自己的分类数。&lt;/p&gt;
+&lt;h3 id=&#34;4修改训练参数并启动训练&#34;&gt;4、修改训练参数并启动训练&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 修改train.py中的parse_opt()函数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 主要修改以下几个，其余根据需要修改&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;parse_opt&lt;/span&gt;(known=&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;False&lt;/span&gt;):  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#228b22&#34;&gt;# 初始模型权重&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.add_argument(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;--weights&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#658b00&#34;&gt;type&lt;/span&gt;=&lt;span style=&#34;color:#658b00&#34;&gt;str&lt;/span&gt;, default=ROOT / &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;models/yolov5m.pt&amp;#39;&lt;/span&gt;, help=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;initial weights path&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#228b22&#34;&gt;# 模型配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.add_argument(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;--cfg&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#658b00&#34;&gt;type&lt;/span&gt;=&lt;span style=&#34;color:#658b00&#34;&gt;str&lt;/span&gt;, default=ROOT / &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;models/yolov5m_2.yaml&amp;#39;&lt;/span&gt;, help=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;model.yaml path&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#228b22&#34;&gt;# 训练数据集配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.add_argument(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;--data&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#658b00&#34;&gt;type&lt;/span&gt;=&lt;span style=&#34;color:#658b00&#34;&gt;str&lt;/span&gt;, default=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;image_root/data.yaml&amp;#39;&lt;/span&gt;, help=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;dataset.yaml path&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#228b22&#34;&gt;# 超参配置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.add_argument(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;--hyp&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#658b00&#34;&gt;type&lt;/span&gt;=&lt;span style=&#34;color:#658b00&#34;&gt;str&lt;/span&gt;, default=ROOT / &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;data/hyps/hyp.scratch-low.yaml&amp;#39;&lt;/span&gt;, help=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hyperparameters path&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#228b22&#34;&gt;# 训练迭代数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.add_argument(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;--epochs&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#658b00&#34;&gt;type&lt;/span&gt;=&lt;span style=&#34;color:#658b00&#34;&gt;int&lt;/span&gt;, default=&lt;span style=&#34;color:#b452cd&#34;&gt;100&lt;/span&gt;, help=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;total training epochs&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#228b22&#34;&gt;# 训练批次大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    parser.add_argument(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;--batch-size&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#658b00&#34;&gt;type&lt;/span&gt;=&lt;span style=&#34;color:#658b00&#34;&gt;int&lt;/span&gt;, default=&lt;span style=&#34;color:#b452cd&#34;&gt;12&lt;/span&gt;, help=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;total batch size for all GPUs, -1 for autobatch&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5根据训练结果修改超参&#34;&gt;5、根据训练结果修改超参&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;lr0&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;0.01&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# initial learning rate (SGD=1E-2, Adam=1E-3)  &lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;lrf&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;0.001&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# final OneCycleLR learning rate (lr0 * lrf)&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;模型预测&#34;&gt;模型预测&lt;/h2&gt;
+&lt;p&gt;使用detect.py预测&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/yolov5&#34;&gt;Yolov5&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+- /post/yolov5/ - By liusanp.</description>
+        </item>
     
     
     

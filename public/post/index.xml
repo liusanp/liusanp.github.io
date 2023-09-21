@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 代码文思</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on 代码文思</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>By liusanp.</copyright>
+    <lastBuildDate>Thu, 21 Sep 2023 16:35:30 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用label-studio进行图片标注</title>
+      <link>/post/label-studio/</link>
+      <pubDate>Thu, 21 Sep 2023 16:35:30 +0800</pubDate>
+      
+      <guid>/post/label-studio/</guid>
+      <description>使用label-studio进行图片标注 使用label-studio进行标注。
+1、创建项目 2、配置项目 2.1、打开项目 2.2、打开配置 2.3、选择标注类型 2.4、选择目标检测类型 2.5、添加标签 3、导入图片 3.1、打开导入框 3.2、选择图片并导入 4、标注图片 4.1、选择图片 4.2、标注图片 5、导出结果 5.1、选择已标注图片 5.2、选择导出格式并导出 原链接：Label Studio</description>
+    </item>
+    
+    <item>
+      <title>YoloV5目标检测模型训练</title>
+      <link>/post/yolov5/</link>
+      <pubDate>Thu, 21 Sep 2023 16:30:51 +0800</pubDate>
+      
+      <guid>/post/yolov5/</guid>
+      <description>YoloV5目标检测模型训练 图片标注 使用labelimg进行图片标注
+# 安装 pip install labelimg # 启动（在image_root目录启动） # image_root // 数据标注根目录 # ├─images // 图片存放目录 # ├─labels // 标注结果存放目录 # └─labels.txt // 预加载标签，一行一个 labelimg images labels.txt 模型训练 以yolov5-7.0为例
+1、从GitHub下载zip包或者克隆代码 2、准备数据集 # 数据集目录 # image_root // 数据标注根目录 # ├─train // 训练集 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─val // 验证集 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # └─data.yaml // 数据集配置 data.</description>
+    </item>
+    
+    <item>
+      <title>编译arm64平台WebRTC</title>
+      <link>/post/compile-arm64-webrtc/</link>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
+      
+      <guid>/post/compile-arm64-webrtc/</guid>
+      <description>前置软件 1、安装Chromium depot tools①
+# 拉取源码 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git # 添加环境变量 echo &amp;#34;export PATH=$PWD/depot_tools:$PATH&amp;#34; &amp;gt; ~/.bashrc source ~/.bashrc 2、执行安装编译依赖脚本②，该脚本需要在第一次同步代码后才有
+./build/install-build-deps.sh 3、执行下载编译环境脚本②，该脚本需要在第一次同步代码后才有
+./build/linux/sysroot_scripts/install-sysroot.py --arch=arm64 4、安装编译器
+sudo apt-get install binutils-aarch64-linux-gnu sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu 编译 1、拉取源码③，后执行前置软件2和3
+mkdir webrtc-checkout cd webrtc-checkout fetch --nohooks webrtc gclient sync 2、切换到主分支
+cd src git checkout main 3、生成编译文件（执行其中一个）
+# 参照④ gn gen out/Linux-arm64 --args=&amp;#34;target_os=\&amp;#34;linux\&amp;#34; target_cpu=\&amp;#34;arm64\&amp;#34; is_debug=false rtc_include_tests=false rtc_use_h264=false is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false&amp;#34; # 参照⑤ gn gen out/Linux-arm64 --args=&amp;#34;target_os=\&amp;#34;linux\&amp;#34; target_cpu=\&amp;#34;arm64\&amp;#34; is_debug=false rtc_include_tests=false rtc_use_h264=true is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false is_clang=false treat_warnings_as_errors=false use_ozone=true rtc_include_pulse_audio=false use_libjpeg_turbo=false use_system_libjpeg=true&amp;#34; 4、编译③</description>
+    </item>
+    
+    <item>
+      <title>UE5在Windows打包Linux项目</title>
+      <link>/post/ue-package-linux/</link>
+      <pubDate>Mon, 05 Dec 2022 20:40:21 +0800</pubDate>
+      
+      <guid>/post/ue-package-linux/</guid>
+      <description>1、在官网下载交叉编译工具链：https://docs.unrealengine.com/5.0/zh-CN/linux-development-requirements-for-unreal-engine/
+2、默认安装后在 cmd 中输入 %LINUX_MULTIARCH_ROOT%x86_64-unknown-linux-gnu\bin\clang++ -v 测试是否安装成功
+3、重启ue5
+4、刷新平台状态
+5、如果打包平台前出现Linux图标，则已经可以打包Linux项目
+6、选择对应平台打包
+原链接：UE5在Windows打包Linux项目</description>
+    </item>
+    
+    <item>
+      <title>Linux设置系统代理</title>
+      <link>/post/linux-system-proxy/</link>
+      <pubDate>Sun, 04 Dec 2022 00:05:08 +0800</pubDate>
+      
+      <guid>/post/linux-system-proxy/</guid>
+      <description># 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; git config --global https.proxy &amp;#39;socks5://127.0.0.1:1080&amp;#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy 原链接：Linux设置系统代理</description>
+    </item>
+    
+    <item>
+      <title>Anaconda3</title>
+      <link>/post/anaconda3/</link>
+      <pubDate>Sun, 10 Jul 2022 17:28:13 +0800</pubDate>
+      
+      <guid>/post/anaconda3/</guid>
+      <description># 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &amp;gt; environment.</description>
+    </item>
+    
+    <item>
+      <title>ES深度分页</title>
+      <link>/post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/</link>
+      <pubDate>Sun, 26 Jun 2022 11:59:58 +0800</pubDate>
+      
+      <guid>/post/es%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5/</guid>
+      <description>ES分页查询有三种情况：
+from + size 从各分片查询（from + size）条，合并后取（from - size）条 注：（from+size）不能超过 max_result_window，默认10000条
+scroll 不适合实时查询，用于查询大批量数据遍历，游标过期会报错 所有结果缓存，类似查询时间点快照，用游标遍历 不能聚合，只有最初的查询有聚合结果 最佳排序是 _doc 入库时间 返回结果最大条数是size * 分片数
+search_after 正常查询后，将前一次查询的最后一条数据的sort放置在search_after字段查询 实时查询，排序可能会变更，并行滚动多个查询 只能一页页下翻
+原链接：ES深度分页</description>
+    </item>
+    
+    <item>
+      <title>GIS地理信息系统</title>
+      <link>/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Sat, 25 Jun 2022 21:43:25 +0800</pubDate>
+      
+      <guid>/post/gis%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F/</guid>
+      <description>GIS基础知识 前后端都要懂一点的 GIS：前后端都要懂一点的 GIS · 语雀
+GIS历史概述与WebGis应用开发技术浅解：GIS历史概述与WebGis应用开发技术浅解 - 腾讯云开发者社区-腾讯云
+OGC，开放地理空间信息联盟：https://www.ogc.org/﻿ OGC电子学习 — OGC e-Learning 2.0.0 文档
+GeoServer 用于共享地理空间数据的开源服务器。GeoServer 是 OpenGIS Web 服务器规范的 J2EE 实现，利用 GeoServer 可以方便的发布地图数据，允许用户对特征数据进行更新、删除、插入操作，通过 GeoServer 可以比较容易的在用户之间迅速共享空间地理信息。
+官网：https://geoserver.org/
+用户手册：GeoServer 用户手册 — GeoServer 2.20.x 用户手册
+基础教程：GeoServer 基础教程（一）：环境搭建篇 | Ethan&#39;s Blog - 记录和思考
+OpenLayers OpenLayers是一个专为Web GIS客户端开发提供的JavaScript 类库包，用于实现标准格式发布的地图数据访问。OpenLayers 支持Open GIS 协会制定的WMS（Web Mapping Service）和WFS（Web Feature Service）等网络服务规范，可以通过远程服务的方式，将以OGC 服务形式发布的地图数据加载到基于浏览器的OpenLayers 客户端中进行显示。
+官网：https://openlayers.org/
+快速开始：https://openlayers.org/en/latest/doc/quickstart.html
+原链接：GIS地理信息系统</description>
+    </item>
+    
+  </channel>
+</rss>

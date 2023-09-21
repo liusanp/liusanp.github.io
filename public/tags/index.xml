@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 代码文思</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on 代码文思</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>By liusanp.</copyright>
+    <lastBuildDate>Thu, 21 Sep 2023 16:35:30 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>label</title>
+      <link>/tags/label/</link>
+      <pubDate>Thu, 21 Sep 2023 16:35:30 +0800</pubDate>
+      
+      <guid>/tags/label/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>标注</title>
+      <link>/tags/%E6%A0%87%E6%B3%A8/</link>
+      <pubDate>Thu, 21 Sep 2023 16:35:30 +0800</pubDate>
+      
+      <guid>/tags/%E6%A0%87%E6%B3%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yolo</title>
+      <link>/tags/yolo/</link>
+      <pubDate>Thu, 21 Sep 2023 16:30:51 +0800</pubDate>
+      
+      <guid>/tags/yolo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm64</title>
+      <link>/tags/arm64/</link>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
+      
+      <guid>/tags/arm64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
+      
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WebRTC</title>
+      <link>/tags/webrtc/</link>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
+      
+      <guid>/tags/webrtc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UE5</title>
+      <link>/tags/ue5/</link>
+      <pubDate>Mon, 05 Dec 2022 20:40:21 +0800</pubDate>
+      
+      <guid>/tags/ue5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>打包</title>
+      <link>/tags/%E6%89%93%E5%8C%85/</link>
+      <pubDate>Mon, 05 Dec 2022 20:40:21 +0800</pubDate>
+      
+      <guid>/tags/%E6%89%93%E5%8C%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>conda</title>
+      <link>/tags/conda/</link>
+      <pubDate>Sun, 10 Jul 2022 17:28:13 +0800</pubDate>
+      
+      <guid>/tags/conda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sun, 10 Jul 2022 17:28:13 +0800</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ES</title>
+      <link>/tags/es/</link>
+      <pubDate>Sun, 26 Jun 2022 11:59:58 +0800</pubDate>
+      
+      <guid>/tags/es/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>分页</title>
+      <link>/tags/%E5%88%86%E9%A1%B5/</link>
+      <pubDate>Sun, 26 Jun 2022 11:59:58 +0800</pubDate>
+      
+      <guid>/tags/%E5%88%86%E9%A1%B5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GIS</title>
+      <link>/tags/gis/</link>
+      <pubDate>Sat, 25 Jun 2022 21:43:25 +0800</pubDate>
+      
+      <guid>/tags/gis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>地理信息</title>
+      <link>/tags/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/</link>
+      <pubDate>Sat, 25 Jun 2022 21:43:25 +0800</pubDate>
+      
+      <guid>/tags/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

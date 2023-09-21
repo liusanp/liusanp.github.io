@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>arm64 on 代码文思</title>
+    <link>/tags/arm64/</link>
+    <description>Recent content in arm64 on 代码文思</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>By liusanp.</copyright>
+    <lastBuildDate>Tue, 06 Dec 2022 18:23:34 +0800</lastBuildDate><atom:link href="/tags/arm64/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编译arm64平台WebRTC</title>
+      <link>/post/compile-arm64-webrtc/</link>
+      <pubDate>Tue, 06 Dec 2022 18:23:34 +0800</pubDate>
+      
+      <guid>/post/compile-arm64-webrtc/</guid>
+      <description>前置软件 1、安装Chromium depot tools①
+# 拉取源码 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git # 添加环境变量 echo &amp;#34;export PATH=$PWD/depot_tools:$PATH&amp;#34; &amp;gt; ~/.bashrc source ~/.bashrc 2、执行安装编译依赖脚本②，该脚本需要在第一次同步代码后才有
+./build/install-build-deps.sh 3、执行下载编译环境脚本②，该脚本需要在第一次同步代码后才有
+./build/linux/sysroot_scripts/install-sysroot.py --arch=arm64 4、安装编译器
+sudo apt-get install binutils-aarch64-linux-gnu sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu 编译 1、拉取源码③，后执行前置软件2和3
+mkdir webrtc-checkout cd webrtc-checkout fetch --nohooks webrtc gclient sync 2、切换到主分支
+cd src git checkout main 3、生成编译文件（执行其中一个）
+# 参照④ gn gen out/Linux-arm64 --args=&amp;#34;target_os=\&amp;#34;linux\&amp;#34; target_cpu=\&amp;#34;arm64\&amp;#34; is_debug=false rtc_include_tests=false rtc_use_h264=false is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false&amp;#34; # 参照⑤ gn gen out/Linux-arm64 --args=&amp;#34;target_os=\&amp;#34;linux\&amp;#34; target_cpu=\&amp;#34;arm64\&amp;#34; is_debug=false rtc_include_tests=false rtc_use_h264=true is_component_build=false use_rtti=true use_custom_libcxx=false rtc_enable_protobuf=false is_clang=false treat_warnings_as_errors=false use_ozone=true rtc_include_pulse_audio=false use_libjpeg_turbo=false use_system_libjpeg=true&amp;#34; 4、编译③</description>
+    </item>
+    
+  </channel>
+</rss>

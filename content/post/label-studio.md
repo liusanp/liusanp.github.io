@@ -67,4 +67,4 @@ draft: false
 ![image-20230921155500113](https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211555314.png)
 
 
-> 原链接：[Label Studio](/post/label-studio)
+> 原链接：[使用label-studio进行图片标注](/post/label-studio)

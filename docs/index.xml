@@ -7,9 +7,150 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Thu, 21 Sep 2023 16:35:30 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Sep 2023 15:36:48 +0800</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>zerotier配置节点内网互联</title>
+        <link>/post/zerotier-nat/</link>
+        <pubDate>Tue, 26 Sep 2023 15:36:48 +0800</pubDate>
+        
+        <guid>/post/zerotier-nat/</guid>
+        <description>代码文思 /post/zerotier-nat/ -&lt;h1 id=&#34;zerotier配置节点内网互联&#34;&gt;zerotier配置节点内网互联&lt;/h1&gt;
+&lt;h2 id=&#34;网络三层nat配置方法linux主机&#34;&gt;网络三层NAT配置方法（linux主机）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;假设zerotier虚拟局域网的网段是192.168.88.0 &lt;code&gt;局域网A 192.168.1.0&lt;/code&gt; &lt;code&gt;局域网B 192.168.2.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;(如果需要互联)在局域网A和B中需要各有一台主机安装zerotier并作为两个内网互联的网关&lt;/li&gt;
+&lt;li&gt;分别是192.168.1.10（192.168.88.10） 192.168.2.10（192.168.88.20）#括号里面为虚拟局域网的IP地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;在zerotier网站的networks里面的managed-routes下配置路由表增加如下内容&#34;&gt;在zerotier网站的networks里面的Managed Routes下配置路由表,增加如下内容&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#如果单向连接,仅需填写下方一个即可.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.1.0/24 via 192.168.88.10 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.2.0/24 via 192.168.88.20 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;开启内核转发&#34;&gt;开启内核转发&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#echo &amp;#34;net.ipv4.ip_forward = 1&amp;#34; &amp;gt;&amp;gt; /etc/sysctl.conf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#sysctl -p&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;防火墙设置&#34;&gt;防火墙设置&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 其中的 zt7nnig26 在不同的机器中不一样，你可以在路由器ssh环境中用 zerotier-cli listnetworks 或者 ifconfig 查询zt开头的网卡名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;PHY_IFACE&lt;/span&gt;=eth0; &lt;span style=&#34;color:#00688b&#34;&gt;ZT_IFACE&lt;/span&gt;=zt7nnig26
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo iptables -t nat -A POSTROUTING -o &lt;span style=&#34;color:#00688b&#34;&gt;$PHY_IFACE&lt;/span&gt; -j MASQUERADE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo iptables -A FORWARD -i &lt;span style=&#34;color:#00688b&#34;&gt;$PHY_IFACE&lt;/span&gt; -o &lt;span style=&#34;color:#00688b&#34;&gt;$ZT_IFACE&lt;/span&gt; -m state --state RELATED,ESTABLISHED -j ACCEPT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo iptables -A FORWARD -i &lt;span style=&#34;color:#00688b&#34;&gt;$ZT_IFACE&lt;/span&gt; -o &lt;span style=&#34;color:#00688b&#34;&gt;$PHY_IFACE&lt;/span&gt; -j ACCEPT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 保存配置到文件，否则重启规则会丢失&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;iptables-save
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/zerotier-nat&#34;&gt;zerotier配置节点内网互联&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+- /post/zerotier-nat/ - By liusanp.</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>自建zerotier-planet</title>
+        <link>/post/zerotier/</link>
+        <pubDate>Tue, 26 Sep 2023 14:49:56 +0800</pubDate>
+        
+        <guid>/post/zerotier/</guid>
+        <description>代码文思 /post/zerotier/ -&lt;h1 id=&#34;自建zerotier-planet&#34;&gt;自建zerotier-planet&lt;/h1&gt;
+&lt;h2 id=&#34;必要条件&#34;&gt;必要条件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;具有公网ip的服务器&lt;/li&gt;
+&lt;li&gt;安装 docker&lt;/li&gt;
+&lt;li&gt;安装 docker-compose&lt;/li&gt;
+&lt;li&gt;防火墙开放TCP端口 4000/9993/3180 和UDP端口 9993&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;用法&#34;&gt;用法&lt;/h2&gt;
+&lt;h3 id=&#34;部署ztncui&#34;&gt;部署ztncui&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;version&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;2.0&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;services&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ztncui&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;container_name&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;ztncui&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;restart&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;always&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;environment&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- MYADDR=1.1.1.1&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#改成自己的服务器公网IP&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- HTTP_PORT=4000&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- HTTP_ALL_INTERFACES=yes&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- ZTNCUI_PASSWD=password&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#默认用户admin的密码&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;ports&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;4000:4000&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# web控制台入口&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;9993:9993&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;9993:9993/udp&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;3180:3180&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# planet/moon文件在线下载入口，如不对外提供。可防火墙禁用此端口。&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;volumes&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;./zerotier-one:/var/lib/zerotier-one&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;- &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;./ztncui/etc:/opt/key-networks/ztncui/etc&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;# 按实际路径挂载卷， 冒号前面是宿主机的， 支持相对路径&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;image&lt;/span&gt;:&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;keynetworks/ztncui&lt;span style=&#34;color:#bbb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;创建planet和moon&#34;&gt;创建planet和moon&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/Jonnyan404/zerotier-planet
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;OR
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://gitee.com/Jonnyan404/zerotier-planet
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;cd&lt;/span&gt; zerotier-planet
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker cp mkmoonworld-x86_64 ztncui:/tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker cp patch.sh ztncui:/tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker &lt;span style=&#34;color:#658b00&#34;&gt;exec&lt;/span&gt; -it ztncui bash /tmp/patch.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker restart ztncui
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;浏览器访问 &lt;code&gt;http://ip:4000&lt;/code&gt; 打开web控制台界面。&lt;/p&gt;
+&lt;p&gt;浏览器访问 &lt;code&gt;http://ip:3180&lt;/code&gt; 打开planet和moon文件下载页面（亦可在项目根目录的&lt;code&gt;./ztncui/etc/myfs/&lt;/code&gt;里获取）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户名:admin&lt;/li&gt;
+&lt;li&gt;密码:password&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;note:&lt;/strong&gt; 如果未指定密码,可执行 &lt;code&gt;docker exec -it ztncui cat /var/log/docker-ztncui.log|grep Password&lt;/code&gt; 获取密码.&lt;/p&gt;
+&lt;h2 id=&#34;各客户端配置planet&#34;&gt;各客户端配置planet&lt;/h2&gt;
+&lt;p&gt;客户端主要为Windows, Mac,Linux, Android&lt;/p&gt;
+&lt;h3 id=&#34;windows-客户端&#34;&gt;Windows 客户端&lt;/h3&gt;
+&lt;p&gt;先安装官方zerotier客户端，将生成的 &lt;code&gt;planet&lt;/code&gt; 文件覆盖粘贴到 &lt;code&gt;C:\ProgramData\ZeroTier One&lt;/code&gt; 中(这个目录是个隐藏目录，需要运允许查看隐藏目录才行)，然后重启zerotier-one服务。
+&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309261519533.png&#34; alt=&#34;搜索服务&#34;&gt;
+&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309261520758.png&#34; alt=&#34;重启服务&#34;&gt;
+使用管理员身份打开PowerShell 执行命令加入组网，看到join ok字样就成功了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#cd5555&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#cd5555&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; zerotier-cli join 网络id(就是在网页里面创建的那个网络)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;200&lt;/span&gt; join OK
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#cd5555&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#cd5555&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;登录管理后台可以看到有个新的客户端，勾选Authorized授权接入。
+&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309261534037.png&#34; alt=&#34;授权&#34;&gt;
+查看连接情况：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#cd5555&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#cd5555&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt; zerotier-cli peers
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;200&lt;/span&gt; peers
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;ztaddr&amp;gt;   &amp;lt;ver&amp;gt;  &amp;lt;role&amp;gt; &amp;lt;lat&amp;gt; &amp;lt;link&amp;gt; &amp;lt;lastTX&amp;gt; &amp;lt;lastRX&amp;gt; &amp;lt;path&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fcbaeb9b6c 1.8.7  PLANET    &lt;span style=&#34;color:#b452cd&#34;&gt;52&lt;/span&gt; DIRECT &lt;span style=&#34;color:#b452cd&#34;&gt;16&lt;/span&gt;       &lt;span style=&#34;color:#b452cd&#34;&gt;8994&lt;/span&gt;     1.1.1.1/9993
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fe92971aad 1.8.7  LEAF      &lt;span style=&#34;color:#b452cd&#34;&gt;14&lt;/span&gt; DIRECT -1       &lt;span style=&#34;color:#b452cd&#34;&gt;4150&lt;/span&gt;     2.2.2.2/9993
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PS C:&lt;span style=&#34;color:#cd5555&#34;&gt;\W&lt;/span&gt;indows&lt;span style=&#34;color:#cd5555&#34;&gt;\s&lt;/span&gt;ystem32&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看到有一个 PLANTET 和 LEAF 角色，连接方式均为 DIRECT(直连)，到这里就加入网络成功了。&lt;/p&gt;
+&lt;h3 id=&#34;linux-客户端&#34;&gt;Linux 客户端&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装linux客户端软件 &lt;code&gt;curl -s https://install.zerotier.com | sudo bash&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;进入目录 /var/lib/zerotier-one，替换目录下的 planet 文件&lt;/li&gt;
+&lt;li&gt;重启 zerotier-one 服务(systemctl restart zerotier-one)&lt;/li&gt;
+&lt;li&gt;加入网络 zerotier-cli join 网络 id&lt;/li&gt;
+&lt;li&gt;管理后台同意加入请求&lt;/li&gt;
+&lt;li&gt;zerotier-cli peers 可以看到 planet 角色&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;安卓客户端配置&#34;&gt;安卓客户端配置&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/kaaass/ZerotierFix&#34;&gt;ZerotierFix&lt;/a&gt;
+&lt;a href=&#34;https://www.v2ex.com/t/768628&#34;&gt;Zerotier 非官方安卓客户端发布：支持自建 Moon 节点 - V2EX&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;私有-zerotier-planet-的优势&#34;&gt;私有 zerotier-planet 的优势:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;解除官方 25 的设备连接数限制&lt;/li&gt;
+&lt;li&gt;提升手机客户端连接的稳定性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;reference-link&#34;&gt;Reference Link&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.emengweb.com/p/zerotier%E7%9A%84planet%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88%E6%A0%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89%E7%9A%84%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E8%AE%B0%E3%80%82%E6%97%A0%E9%9C%80zerotier%E5%AE%98%E7%BD%91%E8%B4%A6%E5%8F%B7%E3%80%82&#34;&gt;zerotier的planet服务器（根服务器）的搭建踩坑记&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mrdoc.fun/doc/443/&#34;&gt;https://www.mrdoc.fun/doc/443/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/key-networks/ztncui-aio&#34;&gt;https://github.com/key-networks/ztncui-aio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/zerotier&#34;&gt;自建zerotier-plant&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+- /post/zerotier/ - By liusanp.</description>
+        </item>
     
     
     
@@ -50,7 +191,7 @@
 &lt;h3 id=&#34;52选择导出格式并导出&#34;&gt;5.2、选择导出格式并导出&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/202309211555314.png&#34; alt=&#34;image-20230921155500113&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;原链接：&lt;a href=&#34;/post/label-studio&#34;&gt;Label Studio&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/label-studio&#34;&gt;使用label-studio进行图片标注&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 - /post/label-studio/ - By liusanp.</description>
         </item>
@@ -127,7 +268,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;模型预测&#34;&gt;模型预测&lt;/h2&gt;
 &lt;p&gt;使用detect.py预测&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;原链接：&lt;a href=&#34;/post/yolov5&#34;&gt;Yolov5&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原链接：&lt;a href=&#34;/post/yolov5&#34;&gt;YoloV5目标检测模型训练&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 - /post/yolov5/ - By liusanp.</description>
         </item>

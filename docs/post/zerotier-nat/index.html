@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html><head>
+<title>zerotier配置节点内网互联</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="bookmark" href="/images/favicon.ico">
+
+
+
+<meta property="og:title" content="zerotier配置节点内网互联" />
+<meta property="og:description" content="zerotier配置节点内网互联 网络三层NAT配置方法（linux主机） 假设zerotier虚拟局域网的网段是192.168.88.0 局域网A 192.168.1.0 局域网B 192.168.2.0 (如果需要互联)在局域网A和B中需要各有一台主机安装zerotier并作为两个内网互联的网关 分别是192.168.1.10（192.168.88.10） 192.168.2.10（192.168.88.20）#括号里面为虚拟局域网的IP地址 在zerotier网站的networks里面的Managed Routes下配置路由表,增加如下内容 #如果单向连接,仅需填写下方一个即可. 192.168.1.0/24 via 192.168.88.10 192.168.2.0/24 via 192.168.88.20 开启内核转发 #echo &#34;net.ipv4.ip_forward = 1&#34; &gt;&gt; /etc/sysctl.conf #sysctl -p 防火墙设置 # 其中的 zt7nnig26 在不同的机器中不一样，你可以在路由器ssh环境中用 zerotier-cli listnetworks 或者 ifconfig 查询zt开头的网卡名 PHY_IFACE=eth0; ZT_IFACE=zt7nnig26 sudo iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE sudo iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT sudo iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT # 保存配置到文件，否则重启规则会丢失 iptables-save 原链接：zerotier配置节点内网互联" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/zerotier-nat/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-09-26T15:36:48+08:00" />
+<meta property="article:modified_time" content="2023-09-26T15:36:48+08:00" /><meta property="og:site_name" content="代码文思" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="zerotier配置节点内网互联"/>
+<meta name="twitter:description" content="zerotier配置节点内网互联 网络三层NAT配置方法（linux主机） 假设zerotier虚拟局域网的网段是192.168.88.0 局域网A 192.168.1.0 局域网B 192.168.2.0 (如果需要互联)在局域网A和B中需要各有一台主机安装zerotier并作为两个内网互联的网关 分别是192.168.1.10（192.168.88.10） 192.168.2.10（192.168.88.20）#括号里面为虚拟局域网的IP地址 在zerotier网站的networks里面的Managed Routes下配置路由表,增加如下内容 #如果单向连接,仅需填写下方一个即可. 192.168.1.0/24 via 192.168.88.10 192.168.2.0/24 via 192.168.88.20 开启内核转发 #echo &#34;net.ipv4.ip_forward = 1&#34; &gt;&gt; /etc/sysctl.conf #sysctl -p 防火墙设置 # 其中的 zt7nnig26 在不同的机器中不一样，你可以在路由器ssh环境中用 zerotier-cli listnetworks 或者 ifconfig 查询zt开头的网卡名 PHY_IFACE=eth0; ZT_IFACE=zt7nnig26 sudo iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE sudo iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT sudo iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT # 保存配置到文件，否则重启规则会丢失 iptables-save 原链接：zerotier配置节点内网互联"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="/">
+    
+        <div class="nav-title">
+            代码文思
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                归档
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#zerotier%e9%85%8d%e7%bd%ae%e8%8a%82%e7%82%b9%e5%86%85%e7%bd%91%e4%ba%92%e8%81%94" onclick="onNavClick(`#zerotier配置节点内网互联-nav`)" id="zerotier配置节点内网互联-nav">
+									zerotier配置节点内网互联
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e7%bd%91%e7%bb%9c%e4%b8%89%e5%b1%82nat%e9%85%8d%e7%bd%ae%e6%96%b9%e6%b3%95linux%e4%b8%bb%e6%9c%ba" onclick="onNavClick(`#网络三层nat配置方法linux主机-nav`)" id="网络三层nat配置方法linux主机-nav">
+									网络三层NAT配置方法（linux主机）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%9c%a8zerotier%e7%bd%91%e7%ab%99%e7%9a%84networks%e9%87%8c%e9%9d%a2%e7%9a%84managed-routes%e4%b8%8b%e9%85%8d%e7%bd%ae%e8%b7%af%e7%94%b1%e8%a1%a8%e5%a2%9e%e5%8a%a0%e5%a6%82%e4%b8%8b%e5%86%85%e5%ae%b9" onclick="onNavClick(`#在zerotier网站的networks里面的managed-routes下配置路由表增加如下内容-nav`)" id="在zerotier网站的networks里面的managed-routes下配置路由表增加如下内容-nav">
+									在zerotier网站的networks里面的Managed Routes下配置路由表,增加如下内容
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e5%90%af%e5%86%85%e6%a0%b8%e8%bd%ac%e5%8f%91" onclick="onNavClick(`#开启内核转发-nav`)" id="开启内核转发-nav">
+									开启内核转发
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%98%b2%e7%81%ab%e5%a2%99%e8%ae%be%e7%bd%ae" onclick="onNavClick(`#防火墙设置-nav`)" id="防火墙设置-nav">
+									防火墙设置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    归档
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#zerotier%e9%85%8d%e7%bd%ae%e8%8a%82%e7%82%b9%e5%86%85%e7%bd%91%e4%ba%92%e8%81%94" onclick="onNavClick(`#zerotier配置节点内网互联-nav`)" id="zerotier配置节点内网互联-nav">
+									zerotier配置节点内网互联
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e7%bd%91%e7%bb%9c%e4%b8%89%e5%b1%82nat%e9%85%8d%e7%bd%ae%e6%96%b9%e6%b3%95linux%e4%b8%bb%e6%9c%ba" onclick="onNavClick(`#网络三层nat配置方法linux主机-nav`)" id="网络三层nat配置方法linux主机-nav">
+									网络三层NAT配置方法（linux主机）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e5%9c%a8zerotier%e7%bd%91%e7%ab%99%e7%9a%84networks%e9%87%8c%e9%9d%a2%e7%9a%84managed-routes%e4%b8%8b%e9%85%8d%e7%bd%ae%e8%b7%af%e7%94%b1%e8%a1%a8%e5%a2%9e%e5%8a%a0%e5%a6%82%e4%b8%8b%e5%86%85%e5%ae%b9" onclick="onNavClick(`#在zerotier网站的networks里面的managed-routes下配置路由表增加如下内容-nav`)" id="在zerotier网站的networks里面的managed-routes下配置路由表增加如下内容-nav">
+									在zerotier网站的networks里面的Managed Routes下配置路由表,增加如下内容
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%bc%80%e5%90%af%e5%86%85%e6%a0%b8%e8%bd%ac%e5%8f%91" onclick="onNavClick(`#开启内核转发-nav`)" id="开启内核转发-nav">
+									开启内核转发
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%98%b2%e7%81%ab%e5%a2%99%e8%ae%be%e7%bd%ae" onclick="onNavClick(`#防火墙设置-nav`)" id="防火墙设置-nav">
+									防火墙设置
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="/">
+            代码文思
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">代码文思</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    zerotier配置节点内网互联
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2023-09-26 15:36
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E8%B5%84%E6%96%99">资料</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/zerotier">zerotier</a>
+                                &nbsp;
+                            
+                                <a href="/tags/nat">nat</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E5%86%85%E7%BD%91%E4%BA%92%E8%81%94">内网互联</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h1 id="zerotier配置节点内网互联">zerotier配置节点内网互联</h1>
+<h2 id="网络三层nat配置方法linux主机">网络三层NAT配置方法（linux主机）</h2>
+<ul>
+<li>假设zerotier虚拟局域网的网段是192.168.88.0 <code>局域网A 192.168.1.0</code> <code>局域网B 192.168.2.0</code></li>
+<li>(如果需要互联)在局域网A和B中需要各有一台主机安装zerotier并作为两个内网互联的网关</li>
+<li>分别是192.168.1.10（192.168.88.10） 192.168.2.10（192.168.88.20）#括号里面为虚拟局域网的IP地址</li>
+</ul>
+<h3 id="在zerotier网站的networks里面的managed-routes下配置路由表增加如下内容">在zerotier网站的networks里面的Managed Routes下配置路由表,增加如下内容</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#228b22">#如果单向连接,仅需填写下方一个即可.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>192.168.1.0/24 via 192.168.88.10 
+</span></span><span style="display:flex;"><span>192.168.2.0/24 via 192.168.88.20 
+</span></span></code></pre></div><h3 id="开启内核转发">开启内核转发</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#228b22">#echo &#34;net.ipv4.ip_forward = 1&#34; &gt;&gt; /etc/sysctl.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">#sysctl -p</span>
+</span></span></code></pre></div><h3 id="防火墙设置">防火墙设置</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#228b22"># 其中的 zt7nnig26 在不同的机器中不一样，你可以在路由器ssh环境中用 zerotier-cli listnetworks 或者 ifconfig 查询zt开头的网卡名</span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">PHY_IFACE</span>=eth0; <span style="color:#00688b">ZT_IFACE</span>=zt7nnig26
+</span></span><span style="display:flex;"><span>sudo iptables -t nat -A POSTROUTING -o <span style="color:#00688b">$PHY_IFACE</span> -j MASQUERADE
+</span></span><span style="display:flex;"><span>sudo iptables -A FORWARD -i <span style="color:#00688b">$PHY_IFACE</span> -o <span style="color:#00688b">$ZT_IFACE</span> -m state --state RELATED,ESTABLISHED -j ACCEPT
+</span></span><span style="display:flex;"><span>sudo iptables -A FORWARD -i <span style="color:#00688b">$ZT_IFACE</span> -o <span style="color:#00688b">$PHY_IFACE</span> -j ACCEPT
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 保存配置到文件，否则重启规则会丢失</span>
+</span></span><span style="display:flex;"><span>iptables-save
+</span></span></code></pre></div><blockquote>
+<p>原链接：<a href="/post/zerotier-nat">zerotier配置节点内网互联</a></p>
+</blockquote>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2023-09-26</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/post/zerotier/">
+			上回<br>自建zerotier-planet
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

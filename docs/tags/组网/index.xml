@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>组网 on 代码文思</title>
+    <link>/tags/%E7%BB%84%E7%BD%91/</link>
+    <description>Recent content in 组网 on 代码文思</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>By liusanp.</copyright>
+    <lastBuildDate>Tue, 26 Sep 2023 14:49:56 +0800</lastBuildDate><atom:link href="/tags/%E7%BB%84%E7%BD%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自建zerotier-planet</title>
+      <link>/post/zerotier/</link>
+      <pubDate>Tue, 26 Sep 2023 14:49:56 +0800</pubDate>
+      
+      <guid>/post/zerotier/</guid>
+      <description>自建zerotier-planet 必要条件 具有公网ip的服务器 安装 docker 安装 docker-compose 防火墙开放TCP端口 4000/9993/3180 和UDP端口 9993 用法 部署ztncui version: &amp;#39;2.0&amp;#39; services: ztncui: container_name: ztncui restart: always environment: - MYADDR=1.1.1.1 #改成自己的服务器公网IP - HTTP_PORT=4000 - HTTP_ALL_INTERFACES=yes - ZTNCUI_PASSWD=password #默认用户admin的密码 ports: - &amp;#39;4000:4000&amp;#39; # web控制台入口 - &amp;#39;9993:9993&amp;#39; - &amp;#39;9993:9993/udp&amp;#39; - &amp;#39;3180:3180&amp;#39; # planet/moon文件在线下载入口，如不对外提供。可防火墙禁用此端口。 volumes: - &amp;#39;./zerotier-one:/var/lib/zerotier-one&amp;#39; - &amp;#39;./ztncui/etc:/opt/key-networks/ztncui/etc&amp;#39; # 按实际路径挂载卷， 冒号前面是宿主机的， 支持相对路径 image: keynetworks/ztncui 创建planet和moon git clone https://github.com/Jonnyan404/zerotier-planet OR git clone https://gitee.com/Jonnyan404/zerotier-planet cd zerotier-planet docker cp mkmoonworld-x86_64 ztncui:/tmp docker cp patch.</description>
+    </item>
+    
+  </channel>
+</rss>

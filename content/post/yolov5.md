@@ -89,4 +89,4 @@ lrf: 0.001  # final OneCycleLR learning rate (lr0 * lrf)
 使用detect.py预测
 
 
-> 原链接：[Yolov5](/post/yolov5)
+> 原链接：[YoloV5目标检测模型训练](/post/yolov5)

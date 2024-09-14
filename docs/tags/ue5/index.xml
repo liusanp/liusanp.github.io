@@ -4,7 +4,7 @@
     <title>UE5 on 代码文思</title>
     <link>/tags/ue5/</link>
     <description>Recent content in UE5 on 代码文思</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
     <lastBuildDate>Mon, 05 Dec 2022 20:40:21 +0800</lastBuildDate>
@@ -14,7 +14,7 @@
       <link>/post/ue-package-linux/</link>
       <pubDate>Mon, 05 Dec 2022 20:40:21 +0800</pubDate>
       <guid>/post/ue-package-linux/</guid>
-      <description>1、在官网下载交叉编译工具链：https://docs.unrealengine.com/5.0/zh-CN/linux-development-requirements-for-unreal-engine/&#xA;2、默认安装后在 cmd 中输入 %LINUX_MULTIARCH_ROOT%x86_64-unknown-linux-gnu\bin\clang++ -v 测试是否安装成功&#xA;3、重启ue5&#xA;4、刷新平台状态&#xA;5、如果打包平台前出现Linux图标，则已经可以打包Linux项目&#xA;6、选择对应平台打包&#xA;原链接：UE5在Windows打包Linux项目</description>
+      <description>&lt;p&gt;1、在官网下载交叉编译工具链：&lt;a href=&#34;https://docs.unrealengine.com/5.0/zh-CN/linux-development-requirements-for-unreal-engine/&#34;&gt;https://docs.unrealengine.com/5.0/zh-CN/linux-development-requirements-for-unreal-engine/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/ue-package-linux-1.png&#34; alt=&#34;ue-package-linux-1&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;2、默认安装后在 &lt;code&gt;cmd&lt;/code&gt; 中输入 &lt;code&gt;%LINUX_MULTIARCH_ROOT%x86_64-unknown-linux-gnu\bin\clang++ -v&lt;/code&gt; 测试是否安装成功&lt;/p&gt;&#xA;&lt;p&gt;3、重启ue5&lt;/p&gt;&#xA;&lt;p&gt;4、刷新平台状态&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/ue-package-linux-2.png&#34; alt=&#34;ue-package-linux-2&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;5、如果打包平台前出现Linux图标，则已经可以打包Linux项目&lt;/p&gt;&#xA;&lt;p&gt;6、选择对应平台打包&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://ll.lao4g.top/d/Oneindex/FILE/BlogImg/ue-package-linux-3.png&#34; alt=&#34;ue-package-linux-3&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;原链接：&lt;a href=&#34;/post/ue-package-linux&#34;&gt;UE5在Windows打包Linux项目&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
   </channel>
 </rss>

@@ -30,8 +30,7 @@
 
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linux设置系统代理"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Linux设置系统代理"/>
 <meta name="twitter:description" content="# 设置代理 export http_proxy=http://127.0.0.1:20172 export HTTP_PROXY=http://127.0.0.1:20172 export https_proxy=http://127.0.0.1:20172 export HTTPS_PROXY=http://127.0.0.1:20172 export all_proxy=socks5h://127.0.0.1:20173 export ALL_PROXY=socks5h://127.0.0.1:20173 export no_proxy=localhost,127.0.0.0/8,::1 export NO_PROXY=localhost,127.0.0.0/8,::1 # 查看代理 echo $http_proxy # 取消代理 unset http_proxy unset HTTP_PROXY unset https_proxy unset HTTPS_PROXY unset all_proxy unset ALL_PROXY unset no_proxy unset NO_PROXY # git设置代理 git config --global http.proxy &#39;socks5://127.0.0.1:1080&#39; git config --global https.proxy &#39;socks5://127.0.0.1:1080&#39; # git取消代理 git config --global --unset http.proxy git config --global --unset https.proxy 原链接：Linux设置系统代理"/>
 
 
@@ -162,15 +161,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
     </div>
     
 </div><div id="extraContainer" class="extra-container">
-    
-    
-    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
 
 
 </div>
-    
+        
+    </div>
     <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
                 keyboard_arrow_up
             </i>
@@ -184,8 +187,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
         
         
     </div>
-</div>
-<div class="single-column-drawer-container" id="drawer"
+</div><div class="single-column-drawer-container" id="drawer"
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">

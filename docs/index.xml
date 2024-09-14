@@ -19,9 +19,7 @@
         <pubDate>Sat, 14 Sep 2024 10:17:16 +0800</pubDate>
         
         <guid>/post/yolov8/</guid>
-        <description>代码文思 /post/yolov8/ -&lt;h1 id=&#34;yolov8目标检测模型训练&#34;&gt;YoloV8目标检测模型训练&lt;/h1&gt;
-&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&#34;图片标注&#34;&gt;图片标注&lt;/h1&gt;
+        <description>代码文思 /post/yolov8/ -&lt;h1 id=&#34;图片标注&#34;&gt;图片标注&lt;/h1&gt;
 &lt;p&gt;使用&lt;a href=&#34;https://github.com/HumanSignal/label-studio&#34;&gt;label-studio&lt;/a&gt;进行标注。&lt;/p&gt;
 &lt;h1 id=&#34;模型训练&#34;&gt;模型训练&lt;/h1&gt;
 &lt;ol&gt;

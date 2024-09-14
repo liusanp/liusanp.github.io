@@ -28,8 +28,7 @@
 
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content=""/>
 
 
@@ -158,10 +157,14 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
     </div>
     
 </div><div id="extraContainer" class="extra-container">
-    
-    
+    <div class="toc-wrapper">
+        
+
+        
+    </div>
     <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
                 keyboard_arrow_up
             </i>
@@ -175,26 +178,33 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
         
         
         
-            <div class="pagination-indicator">
-                <span style="text-align: center">
-                    1<br><div style="display: inline-block; transform: rotate(-28deg)">-</div><br>2
-                </span>
-            </div>
-            
-            
 
+        <a class="pagination-action" 
+            style="visibility:hidden">
             
-            <a class="pagination-action" href="/post/page/2/">
-                <i class="material-icons pagination-action-icon">
-                    chevron_right
-                </i>
-            </a>
+            <i class="material-icons pagination-action-icon">
+                chevron_left
+            </i>
+        </a>
+
+        <div class="pagination-indicator">
+            <span style="text-align: center">
+                1<br>
+                <div style="display: inline-block; transform: rotate(-28deg)">-</div><br>2
+            </span>
+        </div>
+
+
+        <a class="pagination-action"  href="/post/page/2/">
             
+            <i class="material-icons pagination-action-icon">
+                chevron_right
+            </i>
+        </a>
         
         
     </div>
-</div>
-<div class="single-column-drawer-container" id="drawer"
+</div><div class="single-column-drawer-container" id="drawer"
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">

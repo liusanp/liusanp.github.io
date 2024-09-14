@@ -7,15 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Sat, 14 Sep 2024 10:17:16 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Sep 2024 10:17:16 +0800</lastBuildDate>
+    <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>资料</title>
       <link>/categories/%E8%B5%84%E6%96%99/</link>
       <pubDate>Sat, 14 Sep 2024 10:17:16 +0800</pubDate>
-      
       <guid>/categories/%E8%B5%84%E6%96%99/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

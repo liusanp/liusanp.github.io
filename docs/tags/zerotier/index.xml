@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zerotier on 代码文思</title>
+    <title>Zerotier on 代码文思</title>
     <link>/tags/zerotier/</link>
-    <description>Recent content in zerotier on 代码文思</description>
+    <description>Recent content in Zerotier on 代码文思</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Tue, 26 Sep 2023 15:36:48 +0800</lastBuildDate><atom:link href="/tags/zerotier/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Sep 2023 15:36:48 +0800</lastBuildDate>
+    <atom:link href="/tags/zerotier/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>zerotier配置节点内网互联</title>
       <link>/post/zerotier-nat/</link>
       <pubDate>Tue, 26 Sep 2023 15:36:48 +0800</pubDate>
-      
       <guid>/post/zerotier-nat/</guid>
       <description>zerotier配置节点内网互联 网络三层NAT配置方法（linux主机） 假设zerotier虚拟局域网的网段是192.168.88.0 局域网A 192.168.1.0 局域网B 192.168.2.0 (如果需要互联)在局域网A和B中需要各有一台主机安装zerotier并作为两个内网互联的网关 分别是192.168.1.10（192.168.88.10） 192.168.2.10（192.168.88.20）#括号里面为虚拟局域网的IP地址 在zerotier网站的networks里面的Managed Routes下配置路由表,增加如下内容 #如果单向连接,仅需填写下方一个即可. 192.168.1.0/24 via 192.168.88.10 192.168.2.0/24 via 192.168.88.20 开启内核转发 #echo &amp;#34;net.ipv4.ip_forward = 1&amp;#34; &amp;gt;&amp;gt; /etc/sysctl.conf #sysctl -p 防火墙设置 # 其中的 zt7nnig26 在不同的机器中不一样，你可以在路由器ssh环境中用 zerotier-cli listnetworks 或者 ifconfig 查询zt开头的网卡名 PHY_IFACE=eth0; ZT_IFACE=zt7nnig26 sudo iptables -t nat -A POSTROUTING -o $PHY_IFACE -j MASQUERADE sudo iptables -A FORWARD -i $PHY_IFACE -o $ZT_IFACE -m state --state RELATED,ESTABLISHED -j ACCEPT sudo iptables -A FORWARD -i $ZT_IFACE -o $PHY_IFACE -j ACCEPT # 保存配置到文件，否则重启规则会丢失 iptables-save 原链接：zerotier配置节点内网互联</description>
     </item>
-    
     <item>
       <title>自建zerotier-planet</title>
       <link>/post/zerotier/</link>
       <pubDate>Tue, 26 Sep 2023 14:49:56 +0800</pubDate>
-      
       <guid>/post/zerotier/</guid>
       <description>自建zerotier-planet 必要条件 具有公网ip的服务器 安装 docker 安装 docker-compose 防火墙开放TCP端口 4000/9993/3180 和UDP端口 9993 用法 部署ztncui version: &amp;#39;2.0&amp;#39; services: ztncui: container_name: ztncui restart: always environment: - MYADDR=1.1.1.1 #改成自己的服务器公网IP - HTTP_PORT=4000 - HTTP_ALL_INTERFACES=yes - ZTNCUI_PASSWD=password #默认用户admin的密码 ports: - &amp;#39;4000:4000&amp;#39; # web控制台入口 - &amp;#39;9993:9993&amp;#39; - &amp;#39;9993:9993/udp&amp;#39; - &amp;#39;3180:3180&amp;#39; # planet/moon文件在线下载入口，如不对外提供。可防火墙禁用此端口。 volumes: - &amp;#39;./zerotier-one:/var/lib/zerotier-one&amp;#39; - &amp;#39;./ztncui/etc:/opt/key-networks/ztncui/etc&amp;#39; # 按实际路径挂载卷， 冒号前面是宿主机的， 支持相对路径 image: keynetworks/ztncui 创建planet和moon git clone https://github.com/Jonnyan404/zerotier-planet OR git clone https://gitee.com/Jonnyan404/zerotier-planet cd zerotier-planet docker cp mkmoonworld-x86_64 ztncui:/tmp docker cp patch.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>label on 代码文思</title>
+    <title>Label on 代码文思</title>
     <link>/tags/label/</link>
-    <description>Recent content in label on 代码文思</description>
+    <description>Recent content in Label on 代码文思</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Thu, 21 Sep 2023 16:35:30 +0800</lastBuildDate><atom:link href="/tags/label/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Sep 2023 16:35:30 +0800</lastBuildDate>
+    <atom:link href="/tags/label/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用label-studio进行图片标注</title>
       <link>/post/label-studio/</link>
       <pubDate>Thu, 21 Sep 2023 16:35:30 +0800</pubDate>
-      
       <guid>/post/label-studio/</guid>
-      <description>使用label-studio进行图片标注 使用label-studio进行标注。
-1、创建项目 2、配置项目 2.1、打开项目 2.2、打开配置 2.3、选择标注类型 2.4、选择目标检测类型 2.5、添加标签 3、导入图片 3.1、打开导入框 3.2、选择图片并导入 4、标注图片 4.1、选择图片 4.2、标注图片 5、导出结果 5.1、选择已标注图片 5.2、选择导出格式并导出 原链接：使用label-studio进行图片标注</description>
+      <description>使用label-studio进行图片标注 使用label-studio进行标注。&#xA;1、创建项目 2、配置项目 2.1、打开项目 2.2、打开配置 2.3、选择标注类型 2.4、选择目标检测类型 2.5、添加标签 3、导入图片 3.1、打开导入框 3.2、选择图片并导入 4、标注图片 4.1、选择图片 4.2、标注图片 5、导出结果 5.1、选择已标注图片 5.2、选择导出格式并导出 原链接：使用label-studio进行图片标注</description>
     </item>
-    
   </channel>
 </rss>

@@ -33,8 +33,7 @@
 
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="YoloV8目标检测模型训练"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="YoloV8目标检测模型训练"/>
 <meta name="twitter:description" content="图片标注 使用label-studio进行标注。
 模型训练 从 Git 克隆代码
 准备数据集
@@ -165,9 +164,11 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
     </div>
     
 </div><div id="extraContainer" class="extra-container">
-    
-    
-    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
 
 
 	<div class="toc-content">
@@ -238,9 +239,11 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 	</div>
 
 </div>
-    
+        
+    </div>
     <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
                 keyboard_arrow_up
             </i>
@@ -254,8 +257,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
         
         
     </div>
-</div>
-<div class="single-column-drawer-container" id="drawer"
+</div><div class="single-column-drawer-container" id="drawer"
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">

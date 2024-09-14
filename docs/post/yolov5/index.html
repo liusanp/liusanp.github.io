@@ -32,8 +32,7 @@
 
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="YoloV5目标检测模型训练"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="YoloV5目标检测模型训练"/>
 <meta name="twitter:description" content="YoloV5目标检测模型训练 图片标注 使用labelimg进行图片标注
 # 安装 pip install labelimg # 启动（在image_root目录启动） # image_root // 数据标注根目录 # ├─images // 图片存放目录 # ├─labels // 标注结果存放目录 # └─labels.txt // 预加载标签，一行一个 labelimg images labels.txt 模型训练 以yolov5-7.0为例
 1、从GitHub下载zip包或者克隆代码 2、准备数据集 # 数据集目录 # image_root // 数据标注根目录 # ├─train // 训练集 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─val // 验证集 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # └─data.yaml // 数据集配置 data."/>
@@ -163,9 +162,11 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
     </div>
     
 </div><div id="extraContainer" class="extra-container">
-    
-    
-    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
 
 
 	<div class="toc-content">
@@ -360,9 +361,11 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 	</div>
 
 </div>
-    
+        
+    </div>
     <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
                 keyboard_arrow_up
             </i>
@@ -376,8 +379,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
         
         
     </div>
-</div>
-<div class="single-column-drawer-container" id="drawer"
+</div><div class="single-column-drawer-container" id="drawer"
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">

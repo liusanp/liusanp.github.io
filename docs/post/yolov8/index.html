@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html><head>
+<title>YoloV8目标检测模型训练</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="bookmark" href="/images/favicon.ico">
+
+
+
+<meta property="og:title" content="YoloV8目标检测模型训练" />
+<meta property="og:description" content="YoloV8目标检测模型训练 [TOC]
+图片标注 使用label-studio进行标注。
+模型训练 从 Git 克隆代码
+准备数据集
+# 将label studio导出的yolo格式数据集，用handle_train_data.py切分 # 数据集目录 # xxxx-20240914 // 数据标注根目录 # ├─train // 训练集用于模型的学习和训练 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─val // 验证集用于模型的调优和验证，避免过拟合 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─test // 测试集用于模型的最终评估，衡量其在真实环境中的性能 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # └─data.yaml // 数据集配置 # data.yaml配置： path: xxxx-20240914 # dataset root dir train: train # train images (relative to &#39;path&#39;) 118287 images val: val # val images (relative to &#39;path&#39;) 5000 images test: test # 20288 of 40670 images, submit to # Classes nc: 2 # number of classes names: [ &#39;class1&#39;, &#39;class2&#39; ] 修改训练参数并启动训练 # 修改train." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/yolov8/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-09-14T10:17:16+08:00" />
+<meta property="article:modified_time" content="2024-09-14T10:17:16+08:00" /><meta property="og:site_name" content="代码文思" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="YoloV8目标检测模型训练"/>
+<meta name="twitter:description" content="YoloV8目标检测模型训练 [TOC]
+图片标注 使用label-studio进行标注。
+模型训练 从 Git 克隆代码
+准备数据集
+# 将label studio导出的yolo格式数据集，用handle_train_data.py切分 # 数据集目录 # xxxx-20240914 // 数据标注根目录 # ├─train // 训练集用于模型的学习和训练 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─val // 验证集用于模型的调优和验证，避免过拟合 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─test // 测试集用于模型的最终评估，衡量其在真实环境中的性能 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # └─data.yaml // 数据集配置 # data.yaml配置： path: xxxx-20240914 # dataset root dir train: train # train images (relative to &#39;path&#39;) 118287 images val: val # val images (relative to &#39;path&#39;) 5000 images test: test # 20288 of 40670 images, submit to # Classes nc: 2 # number of classes names: [ &#39;class1&#39;, &#39;class2&#39; ] 修改训练参数并启动训练 # 修改train."/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="/">
+    
+        <div class="nav-title">
+            代码文思
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                归档
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/tags">
+                标签
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+	<br>
+	<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备 2022083903号</a>
+	<br>
+	<img src="/images/beian.png" style="width: 16px;"> <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011202002117" target="_blank">粤公网安备 44011202002117号</a>
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#yolov8%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83" onclick="onNavClick(`#yolov8目标检测模型训练-nav`)" id="yolov8目标检测模型训练-nav">
+									YoloV8目标检测模型训练
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%be%e7%89%87%e6%a0%87%e6%b3%a8" onclick="onNavClick(`#图片标注-nav`)" id="图片标注-nav">
+									图片标注
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83" onclick="onNavClick(`#模型训练-nav`)" id="模型训练-nav">
+									模型训练
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e5%9e%8b%e6%b5%8b%e8%af%95" onclick="onNavClick(`#模型测试-nav`)" id="模型测试-nav">
+									模型测试
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    归档
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/tags">
+                    标签
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#yolov8%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83" onclick="onNavClick(`#yolov8目标检测模型训练-nav`)" id="yolov8目标检测模型训练-nav">
+									YoloV8目标检测模型训练
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%be%e7%89%87%e6%a0%87%e6%b3%a8" onclick="onNavClick(`#图片标注-nav`)" id="图片标注-nav">
+									图片标注
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83" onclick="onNavClick(`#模型训练-nav`)" id="模型训练-nav">
+									模型训练
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%a8%a1%e5%9e%8b%e6%b5%8b%e8%af%95" onclick="onNavClick(`#模型测试-nav`)" id="模型测试-nav">
+									模型测试
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="/">
+            代码文思
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">代码文思</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    YoloV8目标检测模型训练
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2024-09-14 10:17
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E8%B5%84%E6%96%99">资料</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/yolo">yolo</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B">目标检测</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h1 id="yolov8目标检测模型训练">YoloV8目标检测模型训练</h1>
+<p>[TOC]</p>
+<h1 id="图片标注">图片标注</h1>
+<p>使用<a href="https://github.com/HumanSignal/label-studio">label-studio</a>进行标注。</p>
+<h1 id="模型训练">模型训练</h1>
+<ol>
+<li>
+<p>从 <a href="https://github.com/liusanp/yolov8_train.git">Git</a> 克隆代码</p>
+</li>
+<li>
+<p>准备数据集</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#228b22"># 将label studio导出的yolo格式数据集，用handle_train_data.py切分</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 数据集目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># xxxx-20240914             // 数据标注根目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ├─train                 // 训练集用于模型的学习和训练</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># | ├─images              // 图片存放目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># | └─labels              // 标注结果存放目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ├─val                   // 验证集用于模型的调优和验证，避免过拟合</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># | ├─images              // 图片存放目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># | └─labels              // 标注结果存放目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># ├─test                  // 测试集用于模型的最终评估，衡量其在真实环境中的性能</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># | ├─images              // 图片存放目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># | └─labels              // 标注结果存放目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># └─data.yaml             // 数据集配置</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#228b22"># data.yaml配置：</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">path</span>:<span style="color:#bbb"> </span>xxxx-20240914 <span style="color:#bbb"> </span><span style="color:#228b22"># dataset root dir  </span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">train</span>:<span style="color:#bbb"> </span>train <span style="color:#bbb"> </span><span style="color:#228b22"># train images (relative to &#39;path&#39;) 118287 images  </span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">val</span>:<span style="color:#bbb"> </span>val <span style="color:#bbb"> </span><span style="color:#228b22"># val images (relative to &#39;path&#39;) 5000 images  </span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">test</span>:<span style="color:#bbb"> </span>test <span style="color:#bbb"> </span><span style="color:#228b22"># 20288 of 40670 images, submit to   </span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#228b22"># Classes  </span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">nc</span>:<span style="color:#bbb"> </span><span style="color:#b452cd">2</span><span style="color:#bbb">  </span><span style="color:#228b22"># number of classes  </span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">names</span>:<span style="color:#bbb"> </span>[<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#cd5555">&#39;class1&#39;</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#cd5555">&#39;class2&#39;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>]<span style="color:#bbb">
+</span></span></span></code></pre></div><ol start="3">
+<li>修改训练参数并启动训练</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#228b22"># 修改train.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 主要修改以下几个，其余根据需要修改</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 修改为训练集文件夹名称</span>
+</span></span><span style="display:flex;"><span>data_name = <span style="color:#cd5555">&#39;xxxx-20240914&#39;</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 首次训练则启用行</span>
+</span></span><span style="display:flex;"><span>model = YOLO(<span style="color:#cd5555">&#39;models/yolov8x.pt&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 二次训练则启用行</span>
+</span></span><span style="display:flex;"><span>model = YOLO(<span style="color:#cd5555">f</span><span style="color:#cd5555">&#39;runs/train/train-</span><span style="color:#cd5555">{</span>data_name<span style="color:#cd5555">}{</span>train_idx<span style="color:#cd5555">}</span><span style="color:#cd5555">/weights/best.pt&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 修改从哪次结果继续训练，首次为空</span>
+</span></span><span style="display:flex;"><span>train_idx = <span style="color:#cd5555">&#39;2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 如需随机角度内旋转数据增强则修改</span>
+</span></span><span style="display:flex;"><span>degrees=<span style="color:#b452cd">100</span>
+</span></span></code></pre></div><ol start="4">
+<li>启动训练</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python train.py
+</span></span></code></pre></div><h1 id="模型测试">模型测试</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#228b22"># 修改test.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 主要修改以下几个，其余根据需要修改</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 修改为训练集文件夹名称</span>
+</span></span><span style="display:flex;"><span>data_name = <span style="color:#cd5555">&#39;xxxx-20240914&#39;</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 修改从哪次结果测试，第一次为空</span>
+</span></span><span style="display:flex;"><span>train_idx = <span style="color:#cd5555">&#39;2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22"># 修改为第几次测试结果，第一次为空</span>
+</span></span><span style="display:flex;"><span>detect_idx = <span style="color:#cd5555">&#39;2&#39;</span>
+</span></span></code></pre></div><blockquote>
+<p>原链接：<a href="/post/yolov8">YoloV8目标检测模型训练</a></p>
+</blockquote>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2024-09-14</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/post/zerotier-nat/">
+			上回<br>zerotier配置节点内网互联
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	<a href="/" >By liusanp.</a>
+	
+	<br>
+	<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备 2022083903号</a>
+	<br>
+	<img src="/images/beian.png" style="width: 16px;"> <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011202002117" target="_blank">粤公网安备 44011202002117号</a>
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

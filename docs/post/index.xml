@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>By liusanp.</copyright>
-    <lastBuildDate>Tue, 26 Sep 2023 15:36:48 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Sep 2024 10:17:16 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>YoloV8目标检测模型训练</title>
+      <link>/post/yolov8/</link>
+      <pubDate>Sat, 14 Sep 2024 10:17:16 +0800</pubDate>
+      
+      <guid>/post/yolov8/</guid>
+      <description>YoloV8目标检测模型训练 [TOC]
+图片标注 使用label-studio进行标注。
+模型训练 从 Git 克隆代码
+准备数据集
+# 将label studio导出的yolo格式数据集，用handle_train_data.py切分 # 数据集目录 # xxxx-20240914 // 数据标注根目录 # ├─train // 训练集用于模型的学习和训练 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─val // 验证集用于模型的调优和验证，避免过拟合 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # ├─test // 测试集用于模型的最终评估，衡量其在真实环境中的性能 # | ├─images // 图片存放目录 # | └─labels // 标注结果存放目录 # └─data.yaml // 数据集配置 # data.yaml配置： path: xxxx-20240914 # dataset root dir train: train # train images (relative to &amp;#39;path&amp;#39;) 118287 images val: val # val images (relative to &amp;#39;path&amp;#39;) 5000 images test: test # 20288 of 40670 images, submit to # Classes nc: 2 # number of classes names: [ &amp;#39;class1&amp;#39;, &amp;#39;class2&amp;#39; ] 修改训练参数并启动训练 # 修改train.</description>
+    </item>
+    
     <item>
       <title>zerotier配置节点内网互联</title>
       <link>/post/zerotier-nat/</link>

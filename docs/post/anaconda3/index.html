@@ -18,20 +18,26 @@
 
 
 
-<meta property="og:title" content="Anaconda3" />
-<meta property="og:description" content="# 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &gt; environment." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/post/anaconda3/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-07-10T17:28:13+08:00" />
-<meta property="article:modified_time" content="2022-07-10T17:28:13+08:00" /><meta property="og:site_name" content="代码文思" />
+<meta property="og:url" content="/post/anaconda3/">
+  <meta property="og:site_name" content="代码文思">
+  <meta property="og:title" content="Anaconda3">
+  <meta property="og:description" content="# 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &gt; environment.yaml # 用配置文件创建新的虚拟环境 conda env create -f environment.yaml # 生成requirements.txt # 安装pipreqs pip install pipreqs # 在当前目录生成 pipreqs . --encoding utf8 --force # 创建虚拟环境 mkvirtualenv -p python3.7 venvname # 切换虚拟环境 workon venvname # 查看conda信息 conda info conda info --envs # 安装失败断掉 # 清楚缓存 conda clean --all # 本地安装 conda install --use-local ./pytorch-1.10.1.tar.bz2 # 切换windows位数 # 打包为exe的话，版本尽量选择python3.6&#43;32位版本，因为win64位系统向下兼容32位程序， # 但是如果不考虑32位系统的话无所谓，直接python64位版本直接打包，只是只能在win64位系统上跑。 # 从64位切换到32位开发模式: set CONDA_FORCE_32BIT=1 # 再切回64位开发模式: set CONDA_FORCE_32BIT=0 pip清华源 https://pypi.tuna.tsinghua.edu.cn/simple 原链接：Anaconda3">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-07-10T17:28:13+08:00">
+    <meta property="article:modified_time" content="2022-07-10T17:28:13+08:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Conda">
 
 
 
 
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Anaconda3"/>
-<meta name="twitter:description" content="# 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &gt; environment."/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Anaconda3">
+  <meta name="twitter:description" content="# 不自启动base，linux环境安装完成后会自动启动默认base环境 conda config --set auto_activate_base false # 切换环境 conda activate 环境名 # 创建一个名为test的环境并指定python版本为3(的最新版本)，也可指定详细python版本 conda create -n test python=3 conda create -n test python=3.7 # 复制环境 conda create -n 新环境名 --clone 旧环境名 # 列出conda管理的所有环境 conda env list # 列出当前环境的所有包 conda list # 安装python包时要先切换到具体环境 # conda方式安装python包 -i 指定源 conda install requests # pip方式安装python包 -i 指定源 -r 指定requirements.txt pip install requests # conda方式卸载requets包 conda remove requests # pip方式卸载requets包 conda remove requests # 删除test环境及下属所有包 conda remove -n test --all # 更新requests包 conda update requests # 导出当前环境的包信息 conda env export &gt; environment.yaml # 用配置文件创建新的虚拟环境 conda env create -f environment.yaml # 生成requirements.txt # 安装pipreqs pip install pipreqs # 在当前目录生成 pipreqs . --encoding utf8 --force # 创建虚拟环境 mkvirtualenv -p python3.7 venvname # 切换虚拟环境 workon venvname # 查看conda信息 conda info conda info --envs # 安装失败断掉 # 清楚缓存 conda clean --all # 本地安装 conda install --use-local ./pytorch-1.10.1.tar.bz2 # 切换windows位数 # 打包为exe的话，版本尽量选择python3.6&#43;32位版本，因为win64位系统向下兼容32位程序， # 但是如果不考虑32位系统的话无所谓，直接python64位版本直接打包，只是只能在win64位系统上跑。 # 从64位切换到32位开发模式: set CONDA_FORCE_32BIT=1 # 再切回64位开发模式: set CONDA_FORCE_32BIT=0 pip清华源 https://pypi.tuna.tsinghua.edu.cn/simple 原链接：Anaconda3">
 
 
 
@@ -49,11 +55,11 @@
 
 
 
-<link rel="stylesheet" href="/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+<link rel="stylesheet" href="/scss/journal.min.7c01e9f6fb2f6083d79d2f3a32ec6b7901e262e94a52a64a542aef98bc5bda64.css" integrity="sha256-fAHp9vsvYIPXnS86MuxreQHiYulKUqZKVCrvmLxb2mQ=" media="screen">
 
 
 
-<link rel="stylesheet" href="/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
 
 
 <script src="/vendor/js/loadCSS.js"></script>
